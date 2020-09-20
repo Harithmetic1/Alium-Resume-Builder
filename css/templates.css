@@ -1,0 +1,15 @@
+.temp-row1, .temp-row2 {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.temp-row1 {
+    margin: 30px 0;
+}
+
+@media (max-width: 768px) {
+    .temp-row1, .temp-row2 {
+        display: block;
+        text-align: center;
+    }
+}

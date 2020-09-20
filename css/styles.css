@@ -1,0 +1,115 @@
+@import "steps.css";
+@import "templates.css";
+
+html {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 16px;
+    color: #000;
+}
+
+a {
+    text-transform: capitalize;
+}
+
+
+#main-content h2 {
+    font-size: 1.8rem;
+    font-weight: 540;
+    margin-bottom: 15px;
+}
+
+.sign-up {
+    display: flex;
+}
+
+.sign-up p {
+    font-size: 1.5rem;
+    margin-right: 20px;
+    margin-bottom: 15px;
+}
+
+#signUp, #footer-link {
+    color: #1E90FF;
+}
+
+#google-signin, #linkedin-signin {
+    display: block;
+    font-size: 1.4rem;
+    padding: 10px 0;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+#google-signin {
+    background-color: #FAFAFA;
+    color: #000;
+}
+
+#linkedin-signin {
+    background-color: #1E90FF;
+    color: #FFF;
+}
+
+.or {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+#email, #password, #name {
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 20px 10px;
+    background-color: #FAFAFA;
+    color: #CCCCCC;
+    margin-bottom: 25px;
+}
+
+#submit-btn {
+    width: 100%;
+    background-color: #1E90FF;
+    border-radius: 0;
+    padding: 10px 0;
+    margin-bottom: 25px;
+}
+
+.panel-footer {
+    background-color: #FFF;
+    border-top: none;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+
+@media (min-width: 992px) {
+    #main-content {
+        width: 47%;
+        float: left;
+    }
+
+    #large {
+        width: 47%;
+        float: right;
+        margin-top: 50px;
+    }
+
+    #main-img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .panel-footer {
+        text-align: left;
+    }
+}
+
+

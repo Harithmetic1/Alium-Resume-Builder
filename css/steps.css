@@ -1,0 +1,82 @@
+ul {
+    list-style-type: none;
+}
+
+#user-name {
+    margin-left: 50px;
+}
+
+#user-profile {
+    border: 1px solid #000;
+    border-radius: 50%;
+}
+
+#main-con {
+    margin-top: 60px;
+}
+
+.top-heading h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1E90FF;
+}
+
+.top-heading p {
+    font-size: 1.4rem;
+}
+
+.steps h3 {
+    font-size: 1.7rem
+}
+
+.steps p {
+    font-size: 1.2rem;
+}
+
+.line {
+    position: absolute;
+    left: 377px;
+    top: 70px;
+    margin-left: -90px;
+}
+
+.line img {
+    width: 200px;
+    height: 4px;
+}
+
+.resume-btn {
+    margin-top: 30px;
+}
+
+#build-resume {
+    background-color: #009494;
+    color: #FFF;
+    font-size: 1.3rem;
+    padding: 10px 25px;
+    border-radius: 3px;
+}
+
+
+
+
+@media (max-width: 1150px) {
+    .line {
+        left: 330px;
+    }
+
+    .line img {
+        width: 150px;
+    }
+}
+
+@media (max-width: 993px) {
+    .line {
+        left: 285px;
+    }
+
+    .line img {
+        width: 100px;
+    }
+}
+
