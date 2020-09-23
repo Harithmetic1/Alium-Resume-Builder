@@ -104,7 +104,7 @@ class Experience(db.Model):
 
     def __repr__(self):
         '''This functions describes how the experience model will be displayed'''
-        return f"Education('{self.title}', '{self.date_started}')"
+        return f"Experience('{self.title}', '{self.date_started}')"
 
 class Education(db.Model):
     id = db.Column(db.Integer, primary_key=True, index=True)
@@ -124,7 +124,7 @@ class Hobbies(db.Model):
 
     def __repr__(self):
         '''This functions describes how the hobby model will be displayed'''
-        return f"Education('{self.name}')"
+        return f"Hobbies('{self.name}')"
 
 class Skill(db.Model):
     id = db.Column(db.Integer, primary_key=True, index=True)
@@ -132,7 +132,7 @@ class Skill(db.Model):
 
     def __repr__(self):
         '''This functions describes how the skill model will be displayed'''
-        return f"Education('{self.name}')"
+        return f"Skill('{self.name}')"
 
 class Languages(db.Model):
     id = db.Column(db.Integer, primary_key=True, index=True)
@@ -140,5 +140,5 @@ class Languages(db.Model):
 
     def __repr__(self):
         '''This functions describes how the language model will be displayed'''
-        return f"Education('{self.name}')"
+        return f"Language('{self.name}')"
 
