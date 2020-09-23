@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Other page</title>
+    <title>Help</title>
     <!-- <a href="https://icons8.com/icon/17949/google"></a> -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
 </head>
 <body>
     <header>
@@ -23,30 +23,30 @@
 
         <div class = "row">
             <section id = "step-one" class = "steps col-sm-4 text-center">
-                <img class = "img-fluid" src = "image/Template.png" width = "100" height = "100">
+                <img class = "img-fluid" src = "{{url_for('static', filename='image/Template.png')}}" width = "100" height = "100">
                 <h3>Step 1</h3>
                 <p>Select your preferred template</p>
-                <div class = "line visible-sm visible-md visible-lg"><img class = "img-fluid" src = "image2/Rectangle 14.png"></div>
+                <div class = "line visible-sm visible-md visible-lg"><img class = "img-fluid" src = "{{url_for('static', filename='image2/Rectangle 14.png')}}"></div>
             </section>
             
 
             <section id = "step-two" class = "steps col-sm-4 text-center">
-                <img class = "img-fluid" src = "image/Edit.png" width = "100" height = "100">
+                <img class = "img-fluid" src = "{{url_for('static', filename='image/Edit.png')}}" width = "100" height = "100">
                 <h3>Step 2</h3>
                 <p>Fill using your details</p>
-                <div class = "line visible-sm visible-md visible-lg"><img class = "img-fluid" src = "image2/Rectangle 14.png"></div>
+                <div class = "line visible-sm visible-md visible-lg"><img class = "img-fluid" src = "{{url_for('static', filename='image2/Rectangle 14.png')}}"></div>
             </section>
             
 
             <section class = "steps col-sm-4 text-center">
-                <img class = "img-fluid" src = "image/download.png" width = "100" height = "100">
+                <img class = "img-fluid" src = "{{url_for('static', filename='image/download.png')}}" width = "100" height = "100">
                 <h3>Step 3</h3>
                 <p>Download and stun your employees</p>
             </section>
         </div>
 
         <div class = "text-center resume-btn">
-            <a id = "build-resume" href = "#">build my resume</a>
+            <a id = "build-resume" href = "{{url_for('main.resume')}}">build my resume</a>
         </div>
 
     </div>
@@ -58,8 +58,8 @@
 
 
     <!-- jQuery (Bootstrap JS plugins depend on it) -->
-    <script src="js/jquery-2.1.4.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="{{url_for('static', filename='js/jquery-2.1.4.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/script.js')}}"></script>
 </body>
 </html>
