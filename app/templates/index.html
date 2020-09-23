@@ -16,12 +16,18 @@
             <a href="{{url_for('app.main.resume')}}">Resume Builder</a>
             <a href="">Blog</a>
             <a href="">Contact Us</a>
-            <span id="sign-in">
-                <a href="{{url_for('app.auth.login')}}"> Sign In</a>
-            </span>
-            <span id="sign-up">
-                <a href="{{url_for('app.auth.signup')}}">Sign Up</a>
-            </span>
+            {% if current_user.is_authenticated %}
+                <span id="sign-up">
+                    <a href="{{url_for('app.auth.logout')}}">Log Out</a>
+                </span>
+            {% else %}
+                <span id="sign-in">
+                    <a href="{{url_for('app.auth.login')}}"> Sign In</a>
+                </span>
+                <span id="sign-up">
+                    <a href="{{url_for('app.auth.signup')}}">Sign Up</a>
+                </span>
+            {% endif %}
         </div>
     </nav>
     <div class="mobilenavbar">
@@ -41,12 +47,18 @@
             <a href="{{url_for('app.main.resume')}}">Resume Builder</a>
             <a href="">Blog</a>
             <a href="">Contact Us</a>
-            <span id="sign-in">
-                <a href="{{url_for('app.auth.login')}}">Sign In</a>
-            </span>
-            <span id="sign-up">
-                <a href="{{url_for('app.auth.signup')}}">Sign Up</a>
-            </span>
+            {% if current_user.is_authenticated %}
+                <span id="sign-up">
+                    <a href="{{url_for('app.auth.logout')}}">Log Out</a>
+                </span>
+            {% else %}
+                <span id="sign-in">
+                    <a href="{{url_for('app.auth.login')}}"> Sign In</a>
+                </span>
+                <span id="sign-up">
+                    <a href="{{url_for('app.auth.signup')}}">Sign Up</a>
+                </span>
+            {% endif %}
         </div>
     </div>
 </div>
@@ -77,7 +89,7 @@
         <div class="left2">
             <h2><span id="blue">Alium</span> gives you the perfect resume for your desired job.</h2>
             <p>It takes only a few seconds for recuirters to decide if you are the right pick for their vacancy. You need to make them curious enough to make them invite you for the interview. That is where we come in our templates are proven to be the best world wide for landing jobs!</p>
-            <button>Explore Templates</button>
+            <button><a href="{{url_for('app.main.templates')}}">Explore Templates</a></button>
         </div>
         </div>
         <div class="right2">
@@ -91,7 +103,7 @@
         <div class="right3">
             <h2>You have the skills, we know it, let your resume prove it.</h2>
             <p>Many times all you need is the right resume for the application process, and the job is yours. With <span id="blue">Alium</span>, with out thousands of well tested resume templates we are certain to give you the right match that will be suitabke for the role you are going for, give us a today</p>
-            <button>Register Now</button>
+            <button><a href="{{url_for('app.auth.signup')}}">Register Now</a></button>
         </div>
     </section>
     
@@ -183,7 +195,7 @@
                 <h3>Popular Links</h3><span id="next" onclick="reveal()"><i class="fas fa-chevron-right"></i></span>
             </div>
             <div class="footerlinks">
-                <a href="">Templates</a>
+                <a href="{{url_for('app.main.templates')}}">Templates</a>
             <a href="">Resume Builder</a>
             <a href="">Blog</a>
             <a href="">Contact Us</a>

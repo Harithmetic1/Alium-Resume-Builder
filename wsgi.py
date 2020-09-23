@@ -9,7 +9,7 @@ def make_shell_context():
         'db': db,
         'User': models.User,
         'Hobbies': models.Hobbies,
-        'Skills': models.Skills,
+        'Skill': models.Skill,
         'Languages': models.Languages,
         'Education': models.Education,
         'Experience': models.Experience
@@ -17,4 +17,4 @@ def make_shell_context():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()

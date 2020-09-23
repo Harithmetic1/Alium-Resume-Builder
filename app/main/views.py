@@ -1,5 +1,6 @@
 from flask import (render_template, url_for, abort, make_response,
     redirect, flash, current_app as app)
+from flask_login import login_required, current_user
 import pdfkit
 from app.main import main
 from app.auth import auth
@@ -14,7 +15,10 @@ def help():
     return render_template('steps.html')
 
 @main.route('/template/<template>')
+@login_required
 def resume_template(template):
+    if not current_user.is_authenticated:
+        return redirect(url_for('app.auth.login'))
     if template == 'gemheart':
         pdf = render_template('user-gemheart.html')
     elif template == 'empire':
@@ -34,9 +38,14 @@ def resume_template(template):
     return response
 
 @main.route('/resume')
+@login_required
 def resume():
+    if not current_user.is_authenticated: 
+        return redirect(url_for('app.auth.login'))
     return {'message': 'In progress'}
 
 @main.route('/templates')
 def templates():
+    if not current_user.is_authenticated:
+        return redirect(url_for('app.auth.login'))
     return render_template('templates.html')
