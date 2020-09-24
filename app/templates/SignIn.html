@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <!-- <a href="https://icons8.com/icon/17949/google"></a> -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+</head>
+<body>
+    <header>
+           
+    </header>
+
+
+    <div class = "container">
+        <div id = "main-content">
+            <h2>welcome back!</h2>
+
+            <div class = "sign-up">
+                <p>Want to join us?</p>
+                <a href = "{{url_for('app.auth.signup')}}" id = "signUp">sign up</a>
+            </div>
+
+            <a href = "{{url_for('app.auth.login_google')}}" id = "google-signin"><img src="{{url_for('static', filename='image/Groupg.png')}}" width = "20" height = "18"/>  sign in with google</a>
+
+            <a href = "{{url_for('app.auth.login_linkedin')}}" id = "linkedin-signin"><img src = "{{url_for('static', filename='image/Groupl.png')}}" width = "20" height = "18"/>  sign in with linkedin</a>
+
+            <p class = "or">OR</p>
+
+            <form method="POST">
+                <div class = "form-group">
+                    <input 
+                        id = "email" 
+                        type="email" 
+                        class="form-control" 
+                        id="exampleInputEmail1" 
+                        aria-describedby="emailHelp" 
+                        placeholder="Enter Your Email Address" 
+                        name="email">
+                </div>
+                <div class = "form-group">
+                    <input 
+                        id = "password" 
+                        type="password" 
+                        class="form-control" 
+                        id="exampleInputPassword1" 
+                        placeholder="Enter Your Password" 
+                        name="password">
+                </div>
+                <button 
+                    type="submit" 
+                    class="btn btn-primary" 
+                    id = "submit-btn">Sign In</button>
+            </form>
+
+            <footer class = "panel-footer">
+                    <p>By signing up you agree to Alium's terms and conditions. You can read them here <a id = "footer-link" href = "#">Privacy Policy | Terms and Conditions</a> but we both know you won't.</p>
+            </footer>
+
+        </div>
+
+        <div id = "large" class = "visible-md visible-lg">
+            <img class = "img-fluid" id = "main-img" src = "{{url_for('static', filename='image/Group 51.png')}}">
+        </div>
+    </div>
+
+    
+
+
+
+
+
+    <!-- jQuery (Bootstrap JS plugins depend on it) -->
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
