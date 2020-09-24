@@ -170,6 +170,10 @@ header .left button{
     border: none;
     color: white;
 }
+#section2 .left2 button a{
+    text-decoration: none;
+    color: white;
+}
 #section3{
     display: flex;
     justify-content: space-between;
@@ -190,6 +194,10 @@ header .left button{
     border-radius: 2px;
     text-align: center;
     border: none;
+    color: white;
+}
+#section3 .right3 button a{
+    text-decoration: none;
     color: white;
 }
 #section4{
@@ -644,7 +652,7 @@ footer .socials a{
         margin: auto;
     }
     header .right img{
-        width: 340px;
+        width: 320px;
         height: 209px;
     }
     header .left{
