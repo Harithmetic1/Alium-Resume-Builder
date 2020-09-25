@@ -44,11 +44,13 @@
                 <p>Download and stun your employees</p>
             </section>
         </div>
-
+        {% if current_user.is_authenticated %}
         <div class = "text-center resume-btn">
-            <a id = "build-resume" href = "{{url_for('main.resume')}}">build my resume</a>
+            <a id = "build-resume" href = "{{url_for('app.main.preview')}}">Preview Resume</a>
+            <a id = "build-resume" href = "{{url_for('app.main.preview')}}">Preview Resume preferred</a>
+            <a id = "build-resume" href = "{{url_for('app.main.preview')}}">Receive Resume in email</a>
         </div>
-
+        {% endif %}
     </div>
 
     

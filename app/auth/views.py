@@ -19,12 +19,13 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         u = User.query.filter_by(email=form.email.data).first()
-        f=open('file.txt', 'w')
-        print(f'{form.password.data}, {form.email.data}', file=f)
-        f.close()
+        # f=open('file.txt', 'w')
+        # print(f'{form.password.data}, {form.email.data}', file=f)
+        # f.close()
         if u and u.check_password(form.password.data):
             login_user(u)
-            return redirect(url_for('app.main.index'))
+            next = request.args.get('next')
+            return redirect(url_for('app.main.index')) if not next else redirect(next)
         flash('Invalid email or password')
     return render_template('SignIn.html', form=form)
 
