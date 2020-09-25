@@ -1,0 +1,121 @@
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #000;
+}
+
+h1 {
+    font-size: 2rem;
+    text-transform: capitalize;
+    color: #1E90FF;
+}
+
+a {
+    color: #009494;
+}
+
+.top-heading {
+    margin: 30px 0;
+}
+
+.top-heading p {
+    font-weight: 500;
+}
+
+.profile-head {
+    margin-bottom: 30px;
+}
+
+.add-skill {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.plus {
+    display: block;
+    font-size: 1.5rem;
+    margin-bottom: -30px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.back-tab {
+    color: #595959;
+    border: 1px solid #595959;
+}
+
+.save {
+    background-color: #009494;
+    color: #FFF;
+}
+
+.back-tab, .save {
+    padding: 10px 70px;
+}
+
+.delete-skill {
+    display: block;
+    margin-top: 20px;
+}
+
+.change {
+    color: #1E90FF;
+    border-bottom: 1px solid #1E90FF;
+}
+
+.delete-profile {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 90px;
+}
+
+.delete {
+    color: #FF0000;
+    border-bottom: 1px solid #FF0000;
+}
+
+
+@media (max-width: 767px) {
+    .top-heading {
+        text-align: center;
+    }
+
+    .back-tab, .save {
+        padding: 10px 30px;
+    }
+
+    .profile-head {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .change {
+        display: block;
+        border-bottom: none;
+        text-decoration: underline;
+    }
+
+    .delete-profile {
+        display: block;
+        margin-top: 20px;
+    }
+
+    .conceal {
+        display: none;
+    }
+
+}
