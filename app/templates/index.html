@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alium || Resume Builder</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='assets/style.css')}}">
+    <link rel="stylesheet" href="../static/assets/style.css">
 </head>
 <body>
     <nav>
         <div class="nav-image">
-            <img src="{{url_for('static', filename='assets/images/Logo 2.png')}}" alt="Alium Logo" width="97px" height="59px">
+
+            <img src="../static/assets/images/Logo 2.png" alt="Alium Logo" width="97px" height="59px">
         </div>
         <div class="navbar-contents">
             <a href="{{url_for('app.main.templates')}}">Templates</a>
@@ -32,7 +33,9 @@
     </nav>
     <div class="mobilenavbar">
     <div class="mobilenav">
-        <img src="{{url_for('static', filename='assets/images/Logo 2.png')}}" alt="Alium Logo" width="97px" height="59px"> 
+
+        <img src="../static/assets/images/Logo 2.png" alt="Alium Logo" width="97px" height="59px"> 
+
         <div id="hamburger" onclick="clickOn()">
             <svg width="26" height="20" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="26" height="4" rx="2" fill="#1E90FF"/>
@@ -73,18 +76,18 @@
             {% endif %}
         </div>
         <div class="right">
-            <img src="{{url_for('static', filename='assets/images/Illustration.png')}}" alt="Header Illustration">
+            <img src="../static/assets/images/Illustration.png" alt="Header Illustration">
         </div>
     </header>
     <section id="section1">
         <p>Trusted By</p>
         <div class="logo">
-            <img src="{{url_for('static', filename='assets/images/google.png')}}" alt="Google">
-            <img src="{{url_for('static', filename='assets/images/facebook.png')}}" alt="facebook">
-            <img src="{{url_for('static', filename='assets/images/PayPal.png')}}" alt="PayPal">
-            <img src="{{url_for('static', filename='assets/images/Stripe.png')}}" alt="Stripe">
-            <img src="{{url_for('static', filename='assets/images/Sony.png')}}" alt="Sony">
-            <img src="{{url_for('static', filename='assets/images/Microsoft.png')}}" alt="Microsoft">
+            <img src="../static/assets/images/google.png" alt="Google">
+            <img src="../static/assets/images/facebook.png" alt="facebook">
+            <img src="../static/assets/images/PayPal.png" alt="PayPal">
+            <img src="../static/assets/images/Stripe.png" alt="Stripe">
+            <img src="../static/assets/images/Sony.png" alt="Sony">
+            <img src="../static/assets/images/Microsoft.png" alt="Microsoft">
         </div>
     </section>
     <section id="section2">
@@ -95,12 +98,12 @@
         </div>
         </div>
         <div class="right2">
-            <img src="{{url_for('static', filename='assets/images/illustration2.png')}}" alt="illustration2">
+            <img src="../static/assets/images/illustration2.png" alt="illustration2">
         </div>
     </section>
     <section id="section3">
         <div class="left3">
-            <img src="{{url_for('static', filename='assets/images/illustration3.png')}}" alt="illustration3">
+            <img src="../static/assets/images/illustration3.png" alt="illustration3">
         </div>
         <div class="right3">
             <h2>You have the skills, we know it, let your resume prove it.</h2>
@@ -116,7 +119,7 @@
         <div class="rect">
         <div class="rectangles">
             <div class="circle">
-                <img src="{{url_for('static', filename='assets/images/share.png')}}" alt="share">
+                <img src="../static/assets/images/share.png" alt="share">
             </div>
             <div class="text">
                 <h3>
@@ -127,7 +130,7 @@
         </div>
         <div class="rectangles" id="top2">
             <div class="circle">
-                <img src="{{url_for('static', filename='assets/images/track.png')}}" alt="share">
+                <img src="../static/assets/images/track.png" alt="share">
             </div>
             <div class="text">
                 <h3>
@@ -138,7 +141,7 @@
         </div>
         <div class="rectangles" id="top">
             <div class="circle">
-                <img src="{{url_for('static', filename='assets/images/thumbs.png')}}" alt="share">
+                <img src="../static/assets/images/thumbs.png" alt="share">
             </div>
             <div class="text">
                 <h3>
@@ -154,7 +157,7 @@
         <div class="rect">
         <div class="rectangles1">
             <div class="circle">
-                <img src="{{url_for('static', filename='assets/images/pic1.png')}}" alt="share">
+                <img src="../static/assets/images/pic1.png" alt="share">
             </div>
             <div class="text">
                 
@@ -166,7 +169,7 @@
         </div>
         <div class="rectangles1" id="top2">
             <div class="circle">
-                <img src="{{url_for('static', filename='assets/images/pic2.png')}}" alt="share">
+                <img src="../static/assets/images/pic2.png" alt="share">
             </div>
             <div class="text">
                 <p>I never thought landing dream jobs will be this easy, thank you Alium!</p>
@@ -177,7 +180,7 @@
         </div>
         <div class="rectangles1" id="top">
             <div class="circle">
-                <img src="{{url_for('static', filename='assets/images/pic3.png')}}" alt="share">
+                <img src="../static/assets/images/pic3.png" alt="share">
             </div>
             <div class="text">
                 
@@ -192,7 +195,7 @@
     <hr>
     <footer>
         <div class="nav-image">
-            <img src="{{url_for('static', filename='assets/images/Logo 2.png')}}" alt="Alium Logo" width="97px" height="59px">
+            <img src="../static/assets/images/Logo 2.png" alt="Alium Logo" width="97px" height="59px">
         </div>
         <div class="popular">
             <div class="head">
@@ -232,9 +235,11 @@
         </div>
         <div class="socials">
             <h3>Socials</h3>
-            <a style="text-decoration:none;" href="}"><i class="fab fa-twitter"></i></a>
-            <a style="text-decoration:none;" href=""><i class="fab fa-facebook-f"></i></a>
-            <a style="text-decoration:none;" href=""><i class="fab fa-instagram"></i></a>
+
+            <a href=""><i class="fab fa-twitter"></i></a>
+            <a href=""><i class="fab fa-facebook-f"></i></a>
+            <a href=""><i class="fab fa-instagram"></i></a>
+
         </div>
     </footer>
     <hr>
@@ -243,6 +248,6 @@
         <a style="text-decoration:none;" href=""><p>Privacy Policy</p></a> 
     </div>
 </body>
-<script src="{{url_for('static', filename='assets/app.js')}}"></script>
+<script src="../static/assets/app.js"></script>
 <script src="https://kit.fontawesome.com/dc7f1f050e.js" crossorigin="anonymous"></script>
 </html>

@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Templates</title>
+    <title>Hobbies</title>
     <!-- <a href="https://icons8.com/icon/17949/google"></a> -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/styles2.css">
     <link rel="stylesheet" href="../static/assets/navbar.css">
 </head>
 <body>
@@ -50,43 +50,48 @@
     </div>
 </div>
 
-    <div class = "container" id = "main-con">
-        <div class = "top-heading text-center">
-            <h2>Choose your resume template.</h2>
-            <p>Click on the resume you want to get started</p>
-            <p>You can always change the template at any time to suit your needs</p>
+   <div class = "container">
+
+        <form class = "container">
+            <label class = "conceal checkbox-inline">
+                <input type = "checkbox" value = "" checked>Personal Information
+            </label>
+            <label class = "conceal checkbox-inline">
+                <input type = "checkbox" value = "" checked>Work Experience
+            </label>
+            <label class = "conceal checkbox-inline">
+                <input type = "checkbox" value = "" checked>Education
+            </label>
+            <label class = "conceal checkbox-inline">
+                <input type = "checkbox" value = "" checked>Skills
+            </label>
+            <label class = "checkbox-inline">
+                <input type = "checkbox" value = "">Hobbies
+            </label>
+        </form>
+
+        <div class = "container top-heading">
+            <h1>Hobbies</h1>
+            <p>Give a list of your hobbies.</p>
         </div>
 
-        <div class = "temp-row1">
-            <section class = "temp-one">
-                <a href = "{{url_for('app.main.resume_template', template='gemheart')}}"><img class = "img-fluid" src = "../static/image/templates/Group 115.png"></a>
-            </section>
 
-            <section class = "temp-two">
-                <a href = "{{url_for('app.main.resume_template', template='adolfa')}}"><img class = "img-fluid" src = "../static/image/templates/Group 114.png"></a>
-            </section>
-        </div>
+        <form>
+            <div class="form-group col-md-12 col-sm-12">
+                <label for="inputHobbies">Hobbies</label>
+                <input type = "text" class = "form-control" id = "inputSchoolName" placeholder = "Hobby 1">
+              </div>
+        </form>
 
-        <div class = "temp-row2">
-            <section class = "temp-one">
-                <a href = "{{url_for('app.main.resume_template', template='contact')}}"><img class = "img-fluid" src = "../static/image/templates/Group 113-20.png"></a>
-            </section>
-
-            <section class = "temp-two">
-                <a href = "{{url_for('app.main.resume_template', template='pixel')}}"><img class = "img-fluid" src = "../static/image/templates/Group 112-20.png"></a>
-            </section>
+   </div>   
+   
+   <div class = "container">
+        <div class = "buttons">
+            <a class = "back-tab" href = "#">Back</a>
+            <a class = "save" href = "#">Save &AMP; Next</a>
         </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-
-        <!-- <div class = "text-center resume-btn">
-            <a id = "build-resume" href = "{{url_for('app.main.resume')}}">&nbsp; &nbsp; &nbsp; &nbsp;next &nbsp; &nbsp; &nbsp; &nbsp;</a>
-        </div> -->
-
     </div>
+
 
     <hr>
     <footer>
