@@ -1,0 +1,10 @@
+Hello {user.firstname}, you requested for your resume.
+Your resume is attached here
+    {{url_for('app.auth.reset_token', token=token, _external=True)}}
+
+If you did not make this request then simply ignore this email.
+Do not reply this mail.
+
+Manager,
+Alium Resume Builder
+{{website}}

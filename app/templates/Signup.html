@@ -34,15 +34,32 @@
             <form method="POST">
                 {{ form.hidden_tag() }}
                 <div class = "form-group">
-                    {% if form.fullname.errors %}
+                    {% if form.firstname.errors %}
                         <div class="invalid-feedback">
-                            {% for error in form.fullname.errors %}
+                            {% for error in form.firstname.errors %}
                                 {{error}}
                             {% endfor %}
                         </div>
                     {% endif %}
-                    {{form.fullname(id = "name", 
-                            class = "form-control", placeholder="Enter Your Fullname" )}}
+                    {{form.firstname(id = "name", 
+                            class = "form-control", placeholder="What should we call you" )}}
+                    <!-- <input 
+                        id = "name" 
+                        type = "text" 
+                        class = "form-control" 
+                        placeholder="Enter Your Fullname" 
+                        name="fullname"> -->
+                </div>
+                <div class = "form-group">
+                    {% if form.lastname.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.lastname.errors %}
+                                {{error}}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {{form.lastname(id = "name", 
+                            class = "form-control", placeholder="Let's know your great last name" )}}
                     <!-- <input 
                         id = "name" 
                         type = "text" 
@@ -59,7 +76,7 @@
                         </div>
                     {% endif %}
                     {{form.email(id = "email", class="form-control", 
-                            id="exampleInputEmail1", placeholder="Enter Your Email Address",
+                            id="exampleInputEmail1", placeholder="We'd like to know your great email",
                             **{'aria-describedby':"emailHelp"})}}
                     <!-- <input 
                         id = "email" 
@@ -80,7 +97,7 @@
                     {% endif %}
                     {{form.password(id = "email", class="form-control", 
                             id="exampleInputEmail1",
-                            placeholder="Enter Your Password" )}}
+                            placeholder="This has to be a secret" )}}
                     <!-- <input 
                         id = "password" 
                         name="password"

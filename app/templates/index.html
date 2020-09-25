@@ -12,12 +12,11 @@
             <img src="{{url_for('static', filename='assets/images/Logo 2.png')}}" alt="Alium Logo" width="97px" height="59px">
         </div>
         <div class="navbar-contents">
-            <a href="">Blog</a>
-            <a href="">Contact Us</a>
-            {% if current_user.is_authenticated %}
             <a href="{{url_for('app.main.templates')}}">Templates</a>
+            {% if current_user.is_authenticated %}
             <a href="{{url_for('app.main.preview')}}">Preview Resume</a>
             <a href="{{url_for('app.main.generate_pdf')}}">Preview Resume as PDF</a>
+            <a href="{{url_for('app.main.send_resume_mail')}}">Receive resume in mail</a>
                 <span id="sign-up">
                     <a href="{{url_for('app.auth.logout')}}">Log Out</a>
                 </span>
@@ -45,10 +44,10 @@
     <div class="dropdown">
         <div class="dropdown-content">
             <a href="{{url_for('app.main.templates')}}">Templates</a>
-            <a href="">Blog</a>
-            <a href="">Contact Us</a>
             {% if current_user.is_authenticated %}
                 <a href="{{url_for('app.main.preview')}}">Preview Resume</a>
+                <a href="{{url_for('app.main.generate_pdf')}}">Preview Resume as PDF</a>
+                <a href="{{url_for('app.main.send_resume_mail')}}">Receive resume in your mail</a>
                 <span id="sign-up">
                     <a href="{{url_for('app.auth.logout')}}">Log Out</a>
                 </span>
@@ -70,7 +69,7 @@
             </h1>
             <p>Build professional and eye catching resumes in just a few minutes with our industry standard templates.</p>
             {% if current_user.is_authenticated %}
-                <button> <a style="text-decoration:none;" href="{{url_for('app.main.preview')}}">Build My Resume</a></button>
+                <button> <a style="text-decoration:none;" href="{{url_for('app.main.templates')}}">Build My Resume</a></button>
             {% endif %}
         </div>
         <div class="right">
@@ -204,7 +203,7 @@
                 {% if current_user.is_authenticated %}
                 <a style="text-decoration:none;" href="{{url_for('app.main.generate_pdf')}}">Preview Resume as PDF</a>
                 <a href="{{url_for('app.main.preview')}}">Preview Resume</a>
-                <a href="{{url_for('app.main.preview')}}">Receive resume in your mail</a>
+                <a href="{{url_for('app.main.send_resume_mail')}}">Receive resume in your mail</a>
                 {% endif %}
                 <a style="text-decoration:none;" href="">Blog</a>
                 <a style="text-decoration:none;" href="">Contact Us</a>
