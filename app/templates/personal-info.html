@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Info</title>
+    <!-- <a href="https://icons8.com/icon/17949/google"></a> -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/styles2.css">
+    <link rel="stylesheet" href="../static/assets/navbar.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-image">
+            <img src="../static/assets/images/Logo 2.png" alt="Alium Logo" width="97px" height="59px">
+        </div>
+        <div class="navbar-contents">
+            <a href="{{url_for('app.main.templates')}}">Templates</a>
+            <a href="{{url_for('app.main.resume')}}">Resume Builder</a>
+            <a href="">Blog</a>
+            <a href="">Contact Us</a>
+        </div>
+        <div class="profile">
+            <p id="navname">Zeus</p> <span id="userimg"><img src="https://via.placeholder.com/50.png/" alt="user"></span>
+        </div>
+    </nav>
+    <div class="mobilenavbar">
+    <div class="mobilenav">
+        <img src="../static/assets/images/Logo 2.png" alt="Alium Logo" width="97px" height="59px"> 
+        <div id="hamburger" onclick="clickOn()">
+            <svg width="26" height="20" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="26" height="4" rx="2" fill="#1E90FF"/>
+                <rect y="8" width="26" height="4" rx="2" fill="#1E90FF"/>
+                <rect y="16" width="26" height="4" rx="2" fill="#1E90FF"/>
+                </svg>
+        </div> 
+    </div>
+    <div class="dropdown">
+        <div class="dropdown-content">
+            <a href="{{url_for('app.main.templates')}}">Templates</a>
+            <a href="{{url_for('app.main.resume')}}">Resume Builder</a>
+            <a href="">Blog</a>
+            <a href="">Contact Us</a>
+        </div>
+        <div class="profile">
+            <a href=""><p id="navname">Zeus</p></a><span id="userimg"><img src="https://via.placeholder.com/50.png/" alt="user"></span>
+        </div>
+    </div>
+</div>
+
+
+   <div class = "container">
+
+        <form class = "container">
+            <label class = "checkbox-inline">
+                <input type = "checkbox" value = "">Personal Information
+            </label>
+            <label class = "conceal checkbox-inline">
+                <input type = "checkbox" value = "">Work Experience
+            </label>
+            <label class = "conceal checkbox-inline">
+                <input type = "checkbox" value = "">Education
+            </label>
+            <label class = "conceal checkbox-inline">
+                <input type = "checkbox" value = "">Skills
+            </label>
+            <label class = "conceal checkbox-inline">
+                <input type = "checkbox" value = "">Hobbies
+            </label>
+        </form>
+
+        <div class = "container top-heading">
+            <h1>This is your Resume Heading</h1>
+            <p>Information you fill here will be used to contact you by the employer.</p>
+        </div>
+
+        <div class = "container profile-head">
+            <div class = "picture-container col-sm-6">
+                <img class = "img-fluid" src = "images/Ellipse 8.png" alt = "profile picture">
+                <a class = "change" href = "#">Change Profile Picture</a>
+            </div>
+
+            <div class = "delete-profile col-sm-6">
+                <a class = "delete" href = "#">Delete Profile Picture</a>
+            </div>
+        </div>
+
+        <form>
+            <div class = "form-row">
+                <div class = "form-group col-md-6">
+                    <label for = "inputFirstName">First Name</label>
+                    <input type = "text" class = "form-control" id = "inputFirstName" placeholder = "Enter your first name">
+                </div>
+                <div class = "form-group col-md-6">
+                    <label for = "inputLastName">Last Name</label>
+                    <input type = "text" class = "form-control" id = "inputLastName" placeholder = "Enter your last name">
+                </div>
+                <div class = "form-group col-md-6">
+                    <label for = "inputJobTitle">Job Title</label>
+                    <input type = "text" class = "form-control" id = "inputJobTitle" placeholder = "Enter your job title">
+                </div>
+                <div class = "form-group col-md-6">
+                    <label for = "inputPhoneNumber">Phone Number</label>
+                    <input type = "tel" class = "form-control" id = "inputPhoneNumber" placeholder = "Enter your phone Number">
+                </div>
+                <div class = "form-group col-md-6">
+                    <label for = "inputAddress">Address</label>
+                    <input type = "text" class = "form-control" id = "inputAddress" placeholder = "Enter your Address">
+                </div>
+                <div class = "form-group col-md-6">
+                    <label for = "inputEmail">Email</label>
+                    <input type = "email" class = "form-control" id = "inputEmail" placeholder = "Enter your email address">
+                </div>
+                <div class="form-group col-md-12 col-sm-12">
+                    <label for="inputProfSummary">Professional Summary</label>
+                    <textarea class="form-control" id="inputProfSummary" rows="8" placeholder="Enter your professional summary. Razzle Dazzle, Hotshot!"></textarea>
+                  </div>
+
+
+            </div>
+        </form>
+
+   </div>
+
+   <div class = "container">
+        <div class = "buttons">
+            <a class = "back-tab" href = "#">Back</a>
+            <a class = "save" href = "#">Save &AMP; Next</a>
+        </div>
+    </div>
+
+
+    <hr>
+    <footer>
+        <div class="nav-image">
+            <img src="../static/assets/images/Logo 2.png" alt="Alium Logo" width="97px" height="59px">
+        </div>
+        <div class="popular">
+            <div class="head">
+                <h3>Popular Links</h3><span id="next" onclick="reveal()"><i class="fas fa-chevron-right"></i></span>
+            </div>
+            <div class="footerlinks">
+                <a href="{{url_for('app.main.templates')}}">Templates</a>
+            <a href="">Resume Builder</a>
+            <a href="">Blog</a>
+            <a href="">Contact Us</a>
+            </div>
+        </div>
+        <div class="company">
+            <div class="head">
+                <h3>Company</h3><span onclick="reveal1()"><i class="fas fa-chevron-right"></i></span>
+            </div>
+            <div class="footerlinks1">
+                <a href="">About Us</a>
+            <a href="">Services</a>
+            <a href="">The Team</a>
+            <a href="">Reservations</a>
+            </div>
+        </div>
+        <div class="contact">
+            <div class="head">
+                <h3>Contact Us</h3><span onclick="reveal2()"><i class="fas fa-chevron-right"></i></span>
+            </div>
+            <div class="footerlinks2">
+            <a href="{{url_for('app.main.help')}}">Help</a>
+            <a href="{{url_for('app.main.help')}}">FAQs</a>
+            <a href="{{url_for('app.main.help')}}">Inquiries</a>
+            </div>
+        </div>
+        <div class="socials">
+            <h3>Socials</h3>
+            <a href=""><i class="fab fa-twitter"></i></a>
+            <a href=""><i class="fab fa-facebook-f"></i></a>
+            <a href=""><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+    <hr>
+    <div class="last">
+        <a href=""><p>Terms and Conditions</p></a> 
+        <a href=""><p>Privacy Policy</p></a> 
+    </div>
+
+
+
+
+
+    
+</body>
+<!-- jQuery (Bootstrap JS plugins depend on it) -->
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="../static/assets/app.js"></script>
+<script src="https://kit.fontawesome.com/dc7f1f050e.js" crossorigin="anonymous"></script>
+</html>
