@@ -49,6 +49,10 @@ class User(db.Model, UserMixin):
     about_me = db.Column(db.Text)
     current_template=db.Column(db.String)
     avatar=db.Column(db.String)
+    city=db.Column(db.String)
+    state=db.Column(db.String)
+    country=db.Column(db.String)
+    current_occupation=db.Column(db.String)
     current_job = db.Column(db.String)
     works=db.relationship('Experience', #connects the user to the experience model
                         secondary=users_works,
@@ -130,6 +134,7 @@ class Education(db.Model):
     school = db.Column(db.String, index=True, nullable=False)
     date_started = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     date_end = db.Column(db.DateTime)
+    location=db.Column(db.String)
     degree_name = db.Column(db.String)
 
     def __repr__(self):

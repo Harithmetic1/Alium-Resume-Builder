@@ -20,25 +20,19 @@ class UpdateAccountForm(FlaskForm):
     email = StringField('Email', 
                         validators=[DataRequired(),
                                  Email()])
-    phone = StringField('+234 818 085 4296', 
-                        validators=[DataRequired(),
-                                 Email()])
+    phone = StringField('Phone Number', 
+                        validators=[DataRequired()])
     state = StringField('website', 
-                        validators=[DataRequired(),
-                                 Email()])
-    current_occupation = StringField('Work', 
-                        validators=[DataRequired(),
-                                 Email()])
+                        validators=[DataRequired()])
+    current_occupation = StringField('Job Title', 
+                        validators=[DataRequired()])
     city = StringField('city', 
-                        validators=[DataRequired(),
-                                 Email()])
+                        validators=[DataRequired()])
     state = StringField('state', 
-                        validators=[DataRequired(),
-                                 Email()])
+                        validators=[DataRequired()])
     country = StringField('country', 
-                        validators=[DataRequired(),
-                                 Email()])
-    about_me = TextAreaField('Username', 
+                        validators=[DataRequired()])
+    about_me = TextAreaField('Professional Summary', 
                             validators=[DataRequired()])
     picture = FileField('Update Profile Picture', 
                         validators=[FileAllowed(['jpg', 'png'])])

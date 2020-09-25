@@ -70,9 +70,7 @@ def add_profile():
         current_user.about_me = form.about_me.data
         db.session.commit()
     
-        return redirect(url_for('app.main.index'))
-    current_user.avatar = save_pic(form.picture.data) if not current_user.avatar \
-            else save_pic(form.picture.data, current_user.avatar)
+        return render_template('work-experience.html')
     form.firstname.data=current_user.firstname
     form.lastname.data=current_user.lastname
     form.email.data=current_user.email
@@ -82,7 +80,8 @@ def add_profile():
     form.country.data=current_user.country
     form.current_occupation.data=current_user.current_occupation
     form.about_me.data=current_user.about_me
-    return render_template('profile.html')
+    return render_template('personal-info.html', form=form)
+
 
 @main.route('/preview')
 @login_required

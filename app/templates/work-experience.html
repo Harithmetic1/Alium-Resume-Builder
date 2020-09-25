@@ -18,7 +18,7 @@
                 <input type = "checkbox" value = "" checked>Personal Information
             </label>
             <label class = "checkbox-inline">
-                <input type = "checkbox" value = "">Work Experience
+                <input type = "checkbox" checked value = "">Work Experience
             </label>
             <label class = "conceal checkbox-inline">
                 <input type = "checkbox" value = "">Education
@@ -186,7 +186,7 @@
         </div>
 
         <div class = "buttons">
-            <a class = "back-tab" href = "#">Back</a>
+            <a class = "back-tab" href = "{{url_for('app.main.add_profile')}}">Back</a>
             <a class = "save" href = "#">Save &AMP; Next</a>
         </div>
     </div>
@@ -198,8 +198,11 @@
 
 
     <!-- jQuery (Bootstrap JS plugins depend on it) -->
-    <script src="js/jquery-2.1.4.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="{{url_for('static', filename='js/jquery-2.1.4.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/script.js')}}"></script>
+    <script>
+        
+    </script>
 </body>
 </html>
