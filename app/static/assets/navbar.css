@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+*{
+    font-family:'Montserrat', sans-serif;
+}
+body{
+    padding: 10px 80px;
+}
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30px 80px;
+}
+.navbar-contents{
+    margin-top: 20px;
+}
+.navbar-contents a{
+    text-decoration: none;
+    padding-right: 20px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #4D4D4D;
+    text-align: center;
+}
+#sign-in{
+    width: 141px;
+    height: 68px;
+    border: 4px solid #329AFF;
+    box-sizing: border-box;
+    border-radius: 2px;
+    padding: 18px 30.5px;
+    text-align: center;
+    /* margin-right: 20px; */
+}
+#sign-in a{
+    padding-right: 0px;
+}
+#sign-up a{
+    padding-right: 0px;
+    color: white;
+}
+#sign-up{
+    border: 4px solid #329AFF;
+    background: #329AFF;
+    border-radius: 2px;
+    padding: 18px 30.5px;
+    text-align: center;
+}
+.mobilenav{
+    display: flex;
+    justify-content: space-between;
+    /* padding: 10px 30px; */
+    /* z-index: -1; */
+}
+
+.dropdown{
+    display: none;
+    height: 0px;
+    width: 0px;
+}
+.dropdown .profile{
+    margin-top: 10px;
+    float: right;
+}
+.dropdown:active{
+    height: auto;
+    width: 100%;
+    transition: width 1s, height 4s;
+}
+.mobilenav #hamburger{
+    margin-top: 20px;
+}
+.dropdown-content{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    
+}
+.none{
+    display: none;
+}
+.mobilenavbar .block{
+    display: block;
+    height: auto;
+    width: 100%;
+    transition: width 1s, height 4s;
+}
+.dropdown-content a{
+    padding-top: 20px;
+    text-decoration: none;
+    padding-right: 20px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #4D4D4D;
+    text-align: center;
+}
+.dropdown-content span{
+    margin: auto;
+    margin-top: 20px;
+}
+#blue{
+    color: #329AFF;
+}
+hr{
+    border: 4px solid #F5F5F5;
+    margin-top: 104px;
+}
+footer{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 108px;
+    flex-direction: column;
+}
+footer h3{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    color: #1E90FF;
+}
+footer a{
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #585858;
+    padding-top: 16px;
+}
+footer .company .footerlinks1 a{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.footerlinks1{
+    display: none;
+}
+.blockF1 {
+    display: block;
+}
+footer .popular .footerlinks a{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.footerlinks{
+    display: none;
+}
+.blockF {
+    display: block;
+}
+
+footer .contact .footerlinks2 a{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-bottom: 5px;
+}
+.footerlinks2{
+    display: none;
+}
+.blockF2 {
+    display: block;
+}
+footer .socials{
+    /* display: flex; */
+    flex-direction: row;
+    /* justify-content: space-evenly; */
+    margin-bottom: 10px;
+}
+footer .socials a{
+    padding-left: 10px;
+}
+.last{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #292929;
+}
+.last a{
+    text-decoration: none;
+    color: #292929;
+}
+.profile{
+    display: flex;
+}
+.profile p{
+    padding: 10px 10px;
+}
+#userimg img{
+    border-radius: 50%;
+}
+.head{
+    display: inline-flex;
+}
+.head span{
+    margin-top: 25px;
+    margin-left: 10px;
+}
+@media (min-width: 1200px){
+    .mobilenavbar{
+        display: none;
+    }
+    #sign-in{
+        margin-right: 20px;
+    }
+    #sign-up{
+        width: 141px;
+        height: 68px;
+        border: 4px solid #329AFF;
+        background: #329AFF;
+        border-radius: 2px;
+        padding: 18px 30.5px;
+    }
+    footer{
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 108px;
+        flex-direction: row;
+    }
+    footer h3{
+        font-style: normal;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 24px;
+        color: #1E90FF;
+    }
+    footer a{
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        color: #585858;
+        padding-top: 36px;
+    }
+    footer .company{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+     .footerlinks1{
+        display: block;
+    }
+    footer .popular{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    .footerlinks{
+        display: block;
+    }
+    footer .contact{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin-bottom: 30px;
+    }
+    .footerlinks2{
+        display: block;
+    }
+    footer .socials{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin-bottom: 30px;
+    }
+    .last{
+        display: flex;
+        justify-content: space-between;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        color: #292929;
+    }
+    .last a{
+        text-decoration: none;
+        color: #292929;;
+    }
+    .head span{
+        display: none;
+    }
+}
+@media (min-width: 965px) and (max-width: 1199px){
+    nav{
+        display: none;
+    }
+}
+@media (min-width: 765px) and (max-width: 964px){
+    nav{
+        display: none;
+    }
+}
+@media (min-width: 326px) and (max-width: 764px){
+    body{
+        padding: 10px 20px;
+    }
+    nav{
+        display: none;
+    }
+}
+@media(max-width: 325px){
+    nav{
+        display: none;
+    }
+}

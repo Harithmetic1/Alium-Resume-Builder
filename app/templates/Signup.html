@@ -7,13 +7,66 @@
     <title>Sign Up</title>
     <!-- <a href="https://icons8.com/icon/17949/google"></a> -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/assets/navbar.css">
 </head>
 <body>
-    <header>
-          
-    </header>
+    <nav>
+        <div class="nav-image">
+            <img src="../static/assets/images/Logo 2.png" alt="Alium Logo" width="97px" height="59px">
+        </div>
+        <div class="navbar-contents">
+            <a href="{{url_for('app.main.templates')}}">Templates</a>
+            <a href="{{url_for('app.main.resume')}}">Resume Builder</a>
+            <a href="">Blog</a>
+            <a href="">Contact Us</a>
+            {% if current_user.is_authenticated %}
+                <span id="sign-up">
+                    <a href="{{url_for('app.auth.logout')}}">Log Out</a>
+                </span>
+            {% else %}
+                <span id="sign-in">
+                    <a href="{{url_for('app.auth.login')}}"> Sign In</a>
+                </span>
+                <span id="sign-up">
+                    <a href="{{url_for('app.auth.signup')}}">Sign Up</a>
+                </span>
+            {% endif %}
+        </div>
+    </nav>
+    <div class="mobilenavbar">
+    <div class="mobilenav">
+        <img src="../static/assets/images/Logo 2.png" alt="Alium Logo" width="97px" height="59px"> 
+        <div id="hamburger" onclick="clickOn()">
+            <svg width="26" height="20" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="26" height="4" rx="2" fill="#1E90FF"/>
+                <rect y="8" width="26" height="4" rx="2" fill="#1E90FF"/>
+                <rect y="16" width="26" height="4" rx="2" fill="#1E90FF"/>
+                </svg>
+        </div> 
+    </div>
+    <div class="dropdown">
+        <div class="dropdown-content">
+            <a href="{{url_for('app.main.templates')}}">Templates</a>
+            <a href="{{url_for('app.main.resume')}}">Resume Builder</a>
+            <a href="">Blog</a>
+            <a href="">Contact Us</a>
+            {% if current_user.is_authenticated %}
+                <span id="sign-up">
+                    <a href="{{url_for('app.auth.logout')}}">Log Out</a>
+                </span>
+            {% else %}
+                <span id="sign-in">
+                    <a href="{{url_for('app.auth.login')}}"> Sign In</a>
+                </span>
+                <span id="sign-up">
+                    <a href="{{url_for('app.auth.signup')}}">Sign Up</a>
+                </span>
+            {% endif %}
+        </div>
+    </div>
+</div>
 
 
     <div class = "container">
@@ -25,9 +78,10 @@
                 <a style="text-decoration:none;" href = "{{url_for('app.auth.login')}}" id = "signUp">sign in</a>
             </div>
 
-            <a style="text-decoration:none;" href = "{{url_for('app.auth.login_google')}}" id = "google-signin"><img src="{{url_for('static', filename='image/Groupg.png')}}" width = "20" height = "18"/>  sign up with google</a>
 
-            <a style="text-decoration:none;" href = "{{url_for('app.auth.login_linkedin')}}" id = "linkedin-signin"><img src = "{{url_for('static', filename='image/Groupl.png')}}" width = "20" height = "18"/>  sign up with linkedin</a>
+            <a href = "{{url_for('app.auth.login_google')}}" id = "google-signin"><img src="../static/image/Groupg.png" width = "20" height = "18"/>  sign up with google</a>
+
+            <a href = "{{url_for('app.auth.login_linkedin')}}" id = "linkedin-signin"><img src = "../static/image/Groupl.png" width = "20" height = "18"/>  sign up with linkedin</a>
 
             <p class = "or">OR</p>
 
@@ -119,15 +173,65 @@
         </div>
     </div>
 
+    <hr>
+    <footer>
+        <div class="nav-image">
+            <img src="../static/assets/images/Logo 2.png" alt="Alium Logo" width="97px" height="59px">
+        </div>
+        <div class="popular">
+            <div class="head">
+                <h3>Popular Links</h3><span id="next" onclick="reveal()"><i class="fas fa-chevron-right"></i></span>
+            </div>
+            <div class="footerlinks">
+                <a href="{{url_for('app.main.templates')}}">Templates</a>
+            <a href="">Resume Builder</a>
+            <a href="">Blog</a>
+            <a href="">Contact Us</a>
+            </div>
+        </div>
+        <div class="company">
+            <div class="head">
+                <h3>Company</h3><span onclick="reveal1()"><i class="fas fa-chevron-right"></i></span>
+            </div>
+            <div class="footerlinks1">
+                <a href="">About Us</a>
+            <a href="">Services</a>
+            <a href="">The Team</a>
+            <a href="">Reservations</a>
+            </div>
+        </div>
+        <div class="contact">
+            <div class="head">
+                <h3>Contact Us</h3><span onclick="reveal2()"><i class="fas fa-chevron-right"></i></span>
+            </div>
+            <div class="footerlinks2">
+            <a href="{{url_for('app.main.help')}}">Help</a>
+            <a href="{{url_for('app.main.help')}}">FAQs</a>
+            <a href="{{url_for('app.main.help')}}">Inquiries</a>
+            </div>
+        </div>
+        <div class="socials">
+            <h3>Socials</h3>
+            <a href=""><i class="fab fa-twitter"></i></a>
+            <a href=""><i class="fab fa-facebook-f"></i></a>
+            <a href=""><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+    <hr>
+    <div class="last">
+        <a href=""><p>Terms and Conditions</p></a> 
+        <a href=""><p>Privacy Policy</p></a> 
+    </div>
+
+
+
+
+
     
-
-
-
-
-
-    <!-- jQuery (Bootstrap JS plugins depend on it) -->
-    <script src="{{url_for('static', filename='js/jquery-2.1.4.min.js')}}"></script>
-    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
-    <script src="{{url_for('static', filename='js/script.js')}}"></script>
 </body>
+<!-- jQuery (Bootstrap JS plugins depend on it) -->
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="../static/assets/app.js"></script>
+<script src="https://kit.fontawesome.com/dc7f1f050e.js" crossorigin="anonymous"></script>
 </html>

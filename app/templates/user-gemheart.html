@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemheart Template</title>
+    <link rel="stylesheet" href="../static/assets/gemheart.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/assets/navbar.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-image">
+            <img src="../static/assets/images/Logo 2.png" alt="Alium Logo" width="97px" height="59px">
+        </div>
+        <div class="navbar-contents">
+            <a href="{{url_for('app.main.templates')}}">Templates</a>
+            <a href="{{url_for('app.main.resume')}}">Resume Builder</a>
+            <a href="">Blog</a>
+            <a href="">Contact Us</a>
+        </div>
+        <div class="profile">
+            <p id="navname">Zeus</p> <span id="userimg"><img src="https://via.placeholder.com/50.png/" alt="user"></span>
+        </div>
+    </nav>
+    <div class="mobilenavbar">
+    <div class="mobilenav">
+        <img src="../static/assets/images/Logo 2.png" alt="Alium Logo" width="97px" height="59px"> 
+        <div id="hamburger" onclick="clickOn()">
+            <svg width="26" height="20" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="26" height="4" rx="2" fill="#1E90FF"/>
+                <rect y="8" width="26" height="4" rx="2" fill="#1E90FF"/>
+                <rect y="16" width="26" height="4" rx="2" fill="#1E90FF"/>
+                </svg>
+        </div> 
+    </div>
+    <div class="dropdown">
+        <div class="dropdown-content">
+            <a href="{{url_for('app.main.templates')}}">Templates</a>
+            <a href="{{url_for('app.main.resume')}}">Resume Builder</a>
+            <a href="">Blog</a>
+            <a href="">Contact Us</a>
+        </div>
+        <div class="profile">
+            <a href=""><p id="navname">Zeus</p></a><span id="userimg"><img src="https://via.placeholder.com/50.png/" alt="user"></span>
+        </div>
+    </div>
+</div>
+    <section>
+        <div class="gemheart-template">
+            <img id="first" src="../static/assets/images/Ellipse 8.png" alt="">
+            <div class="left-content">
+                <div class="image">
+                    <img src="https://via.placeholder.com/80.png?text=Your+Picture" alt="">
+                </div>
+                <div class="contact">
+                    <h1>Contact</h1>
+                    <div class="phone">
+                        <i class="fas fa-phone-alt"></i> <span id="telephone">+413-445-314</span> <br>
+                        <i class="fas fa-envelope"></i> <span id="mail">kazzarkingbreaker@mail.com</span> <br>
+                        <i class="fas fa-map-marker-alt"></i> <span id="mail">Some Place, Some Land, Country</span>
+                    </div>
+                </div>
+                <div class="education">
+                    <h1>Education</h1>
+                    <div class="school">
+                        <div class="year1">
+                        <p>2014 - 2017</p></div>
+                        <p id="degree">Degree Level, Degree Name</p>
+                        <p id="school1">University or College | Location</p>
+                        <div class="year1">
+                        <p id="year2">2010 - 2014</p></div>
+                        <p id="degree">Degree Level, Degree Name</p>
+                        <p id="school1">University or College | Location</p>
+                        <div class="year1">
+                        <p id="year3">2018 - present</p></div>
+                        <p id="degree">Degree Level, Degree Name</p>
+                        <p id="school1">University or College | Location</p>
+                    </div>
+                    
+
+                </div>
+            </div>
+            <div class="right-content">
+                <h1 class="first-name">Kazzar <span id="blue" class="last-name">Silva</span></h1>
+                <div class="contents">
+                    <h2 id="job-title">Product Designer</h2>
+                    <p id="bio">Now some have died and some are alive and others sail on sea with the keys to the cage and the Devil to pay we lay to Fiddler's Green. Yo ho, haul together Hoist the colours high Heave ho, thieves and beggars. Never shall we die.</p>
+                    <div class="work">
+                        <h2>Work Experience</h2>
+                        <div class="job">
+                            <h3>Job Position</h3>
+                            <div class="year1"><p id="Jyear1">Present</p></div>
+                            <p id="company-name">company Name</p>
+                            <p id="duties">Enter Duties and functions here. Brief, coincise and straight to the point.</p>
+                        </div>
+                        <div class="job">
+                            <h3>Job Position</h3>
+                            <div class="year1"><p id="Jyear2">2018 -2020</p></div>
+                            <p id="company-name">company Name</p>
+                            <p id="duties">Enter Duties and functions here. Brief, coincise and straight to the point.</p>
+                        </div>
+                    </div>
+                    <div class="hobbies">
+                        <h2>Hobbies</h2>
+                        <div class="hobby-list">
+                            <div id="hobby1">
+                                <svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="20" cy="20" r="20" fill="#1E90FF"/>
+                                    </svg>
+                                    <span id="hobbyA">Being Awesome</span>
+                            </div>
+                            <div id="hobby2">
+                                <svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="20" cy="20" r="20" fill="#1E90FF"/>
+                                    </svg>
+                                    <span id="hobbyB">Learning</span>
+                            </div>
+                            <div id="hobby3">
+                                <svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="20" cy="20" r="20" fill="#1E90FF"/>
+                                    </svg>
+                                    <span id="hobbyC">Travelling</span>
+                            </div>
+                            <div id="hobby4">
+                                <svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="20" cy="20" r="20" fill="#1E90FF"/>
+                                    </svg>
+                                    <span id="hobbyD">Designing</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skills">
+                        <h2>Skills</h2>
+                        <p>Figma</p>
+                        <p>Graphics Design</p>
+                        <p>Invision</p>
+                        <p>Sketch</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <hr>
+    <footer>
+        <div class="nav-image">
+            <img src="../static/assets/images/Logo 2.png" alt="Alium Logo" width="97px" height="59px">
+        </div>
+        <div class="popular">
+            <div class="head">
+                <h3>Popular Links</h3><span id="next" onclick="reveal()"><i class="fas fa-chevron-right"></i></span>
+            </div>
+            <div class="footerlinks">
+                <a href="{{url_for('app.main.templates')}}">Templates</a>
+            <a href="">Resume Builder</a>
+            <a href="">Blog</a>
+            <a href="">Contact Us</a>
+            </div>
+        </div>
+        <div class="company">
+            <div class="head">
+                <h3>Company</h3><span onclick="reveal1()"><i class="fas fa-chevron-right"></i></span>
+            </div>
+            <div class="footerlinks1">
+                <a href="">About Us</a>
+            <a href="">Services</a>
+            <a href="">The Team</a>
+            <a href="">Reservations</a>
+            </div>
+        </div>
+        <div class="contact">
+            <div class="head">
+                <h3>Contact Us</h3><span onclick="reveal2()"><i class="fas fa-chevron-right"></i></span>
+            </div>
+            <div class="footerlinks2">
+            <a href="{{url_for('app.main.help')}}">Help</a>
+            <a href="{{url_for('app.main.help')}}">FAQs</a>
+            <a href="{{url_for('app.main.help')}}">Inquiries</a>
+            </div>
+        </div>
+        <div class="socials">
+            <h3>Socials</h3>
+            <a href=""><i class="fab fa-twitter"></i></a>
+            <a href=""><i class="fab fa-facebook-f"></i></a>
+            <a href=""><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+    <hr>
+    <div class="last">
+        <a href=""><p>Terms and Conditions</p></a> 
+        <a href=""><p>Privacy Policy</p></a> 
+    </div>
+
+
+
+
+
+    
+</body>
+<!-- jQuery (Bootstrap JS plugins depend on it) -->
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="../static/assets/app.js"></script>
+<script src="https://kit.fontawesome.com/dc7f1f050e.js" crossorigin="anonymous"></script>
+</html>
