@@ -75,39 +75,63 @@
 
             <div class = "sign-up">
                 <p>Want to join us?</p>
-                <a href = "{{url_for('app.auth.signup')}}" id = "signUp">sign up</a>
+                <a style="text-decoration:none;" href = "{{url_for('app.auth.signup')}}" id = "signUp">sign up</a>
             </div>
 
-            <a href = "{{url_for('app.auth.login_google')}}" id = "google-signin"><img src="{{url_for('static', filename='image/Groupg.png')}}" width = "20" height = "18"/>  sign in with google</a>
+            <a style="text-decoration:none;" href = "{{url_for('app.auth.login_google')}}" id = "google-signin"><img src="{{url_for('static', filename='image/Groupg.png')}}" width = "20" height = "18"/>  sign in with google</a>
 
-            <a href = "{{url_for('app.auth.login_linkedin')}}" id = "linkedin-signin"><img src = "{{url_for('static', filename='image/Groupl.png')}}" width = "20" height = "18"/>  sign in with linkedin</a>
+            <a style="text-decoration:none;" href = "{{url_for('app.auth.login_linkedin')}}" id = "linkedin-signin"><img src = "{{url_for('static', filename='image/Groupl.png')}}" width = "20" height = "18"/>  sign in with linkedin</a>
 
             <p class = "or">OR</p>
 
             <form method="POST">
+                {{ form.hidden_tag() }}
                 <div class = "form-group">
-                    <input 
+                    {% if form.email.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                {{error}}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {{ form.email(id = "email", 
+                                class="form-control",
+                                id="exampleInputEmail1",  
+                                placeholder="Enter Your Email Address",
+                                **{'aria-describedby':'emailHelp'}) }}
+                    <!-- <input 
                         id = "email" 
                         type="email" 
                         class="form-control" 
                         id="exampleInputEmail1" 
                         aria-describedby="emailHelp" 
                         placeholder="Enter Your Email Address" 
-                        name="email">
+                        name="email"> -->
                 </div>
                 <div class = "form-group">
-                    <input 
+                    {% if form.password.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                {{error}}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {{ form.password(id = "email", class="form-control", 
+                        id="exampleInputEmail1",
+                        placeholder="Enter Your Password" ) }}
+                    <!-- <input 
                         id = "password" 
                         type="password" 
                         class="form-control" 
                         id="exampleInputPassword1" 
                         placeholder="Enter Your Password" 
-                        name="password">
+                        name="password"> -->
                 </div>
-                <button 
+                {{form.submit(class="btn btn-primary", id = "submit-btn")}}
+                <!-- <button 
                     type="submit" 
                     class="btn btn-primary" 
-                    id = "submit-btn">Sign In</button>
+                    id = "submit-btn">Sign In</button> -->
             </form>
 
             <footer class = "panel-footer">
@@ -175,7 +199,7 @@
 
 
 
-    
+
 </body>
 <!-- jQuery (Bootstrap JS plugins depend on it) -->
 <script src="js/jquery-2.1.4.min.js"></script>

@@ -75,8 +75,9 @@
 
             <div class = "sign-up">
                 <p>Already have an account?</p>
-                <a href = "{{url_for('app.auth.login')}}" id = "signUp">sign in</a>
+                <a style="text-decoration:none;" href = "{{url_for('app.auth.login')}}" id = "signUp">sign in</a>
             </div>
+
 
             <a href = "{{url_for('app.auth.login_google')}}" id = "google-signin"><img src="../static/image/Groupg.png" width = "20" height = "18"/>  sign up with google</a>
 
@@ -85,37 +86,80 @@
             <p class = "or">OR</p>
 
             <form method="POST">
+                {{ form.hidden_tag() }}
                 <div class = "form-group">
-                    <input 
+                    {% if form.fullname.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.fullname.errors %}
+                                {{error}}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {{form.fullname(id = "name", 
+                            class = "form-control", placeholder="Enter Your Fullname" )}}
+                    <!-- <input 
                         id = "name" 
                         type = "text" 
                         class = "form-control" 
                         placeholder="Enter Your Fullname" 
-                        name="fullname">
+                        name="fullname"> -->
                 </div>
                 <div class = "form-group">
-                    <input 
+                    {% if form.email.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                {{error}}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {{form.email(id = "email", class="form-control", 
+                            id="exampleInputEmail1", placeholder="Enter Your Email Address",
+                            **{'aria-describedby':"emailHelp"})}}
+                    <!-- <input 
                         id = "email" 
                         type="email" 
                         name="email"
                         class="form-control" 
                         id="exampleInputEmail1" 
                         aria-describedby="emailHelp" 
-                        placeholder="Enter Your Email Address">
+                        placeholder="Enter Your Email Address"> -->
                 </div>
                 <div class = "form-group">
-                    <input 
+                    {% if form.password.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                {{error}}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {{form.password(id = "email", class="form-control", 
+                            id="exampleInputEmail1",
+                            placeholder="Enter Your Password" )}}
+                    <!-- <input 
                         id = "password" 
                         name="password"
                         type="password" 
                         class="form-control" 
                         id="exampleInputPassword1" 
-                        placeholder="Enter Your Password">
+                        placeholder="Enter Your Password"> -->
                 </div>
-                <button 
+                <div class="form-group">
+                    {% if form.confirm_password.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.confirm_password.errors %}
+                                {{error}}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {{form.confirm_password(id = "password", class="form-control", 
+                            id="exampleInputEmail1", 
+                            placeholder="Re-enter password")}}
+                </div>
+                {{form.submit(class='btn btn-primary', id='submit-btn')}}
+                <!-- <button 
                     type="submit" 
                     class="btn btn-primary" 
-                    id = "submit-btn">Sign Up</button>
+                    id = "submit-btn">Sign Up</button> -->
             </form>
 
             <footer class = "panel-footer">
@@ -125,7 +169,7 @@
         </div>
 
         <div id = "large" class = "visible-md visible-lg">
-            <img class = "img-fluid" id = "main-img" src = "image/Group 51.png">
+            <img class = "img-fluid" id = "main-img" src = "{{url_for('static', filename='image/Group 51.png')}}">
         </div>
     </div>
 
