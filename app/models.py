@@ -47,6 +47,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String, unique=True, index=True, nullable=False)
     password_hash = db.Column(db.String, nullable=False)
     about_me = db.Column(db.Text)
+    current_template=db.Column(db.String)
+    avatar=db.Column(db.String)
     current_job = db.Column(db.String)
     works=db.relationship('Experience', #connects the user to the experience model
                         secondary=users_works,
@@ -129,6 +131,7 @@ class Hobbies(db.Model):
 class Skill(db.Model):
     id = db.Column(db.Integer, primary_key=True, index=True)
     name = db.Column(db.String, index=True, unique=True)
+    level = db.Column(db.Integer)
 
     def __repr__(self):
         '''This functions describes how the skill model will be displayed'''
@@ -137,6 +140,7 @@ class Skill(db.Model):
 class Languages(db.Model):
     id = db.Column(db.Integer, primary_key=True, index=True)
     name = db.Column(db.String, index=True, unique=True)
+    level = db.Column(db.Integer)
 
     def __repr__(self):
         '''This functions describes how the language model will be displayed'''
