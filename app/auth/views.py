@@ -8,6 +8,7 @@ from app import db
 from app.auth import auth
 from app.auth.forms import (LoginForm, RegistrationForm, 
                 ResetPasswordRequestForm, ResetPasswordForm)
+from app.emails import send_email
 from app.main import main
 from app.models import User
 
@@ -19,12 +20,10 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         u = User.query.filter_by(email=form.email.data).first()
-        f=open('file.txt', 'w')
-        print(f'{form.password.data}, {form.email.data}', file=f)
-        f.close()
         if u and u.check_password(form.password.data):
             login_user(u)
-            return redirect(url_for('app.main.index'))
+            next = request.args.get('next')
+            return redirect(url_for('app.main.index')) if not next else redirect(next)
         flash('Invalid email or password')
     return render_template('SignIn.html', form=form)
 
@@ -36,22 +35,16 @@ def signup():
     if form.validate_on_submit():
         u = User.query.filter_by(email=form.email.data).first()
         if not u:
-            if len(form.fullname.data.split(' ')) < 2:
-                f = open('file.txt', 'w')
-                print(form.fullname.data.split(' '), file=f)
-                f.close()
-            else:
-                u = User(email=form.email.data,
-                        firstname=form.fullname.data.split(' ')[0],
-                        lastname=form.email.data.split(' ')[1]
-                    )
-                u.set_password(form.password.data)
-                db.session.add(u)
-                db.session.commit()
-                flash('Account created  successfully')
-                login_user(u)
-                return redirect(url_for('app.main.index'))
-        flash('Email chosen')
+            u = User(email=form.email.data,
+                    firstname=form.firstname.data,
+                    lastname=form.lastname.data
+                )
+            u.set_password(form.password.data)
+            db.session.add(u)
+            db.session.commit()
+            flash('Account created  successfully')
+            login_user(u)
+            return redirect(url_for('app.main.index'))
     return render_template('Signup.html', form=form)
 
 @auth.route('/login/linkeidn')
@@ -67,36 +60,35 @@ def logout():
     logout_user()
     return redirect(url_for('app.main.index'))
 
-
-def send_email(sender, recipient, subject, body, **kwargs):
-    msg = Message(subject=subject, 
-                sender=sender,
-                body=body,
-                recipients=[recipient.email])
-    msg.html = html if html else None
-    mail.send(msg)
-
+def send_reset_email(sender, user):
+    token=user.get_reset_token()
+    body=render_template('mail/reset-password-mail.txt',
+                            token=token, user=user,
+                            website=url_for('app.main.index'))
+    html=render_template('mail/reset-password-mail.html',
+                            token=token, user=user,
+                            website=url_for('app.main.index'))
+    sent=send_email(sender=sender,
+            subject='Reset Password Request - [Alium || Resume Builder]',
+            recipient=user.email,
+            body=body,
+            html=html)
+    return sent if sent else None
 
 @auth.route('/reset_password', methods=['GET', 'POST'])
 def reset_request():
     if current_user.is_authenticated:
         return redirect(url_for('app.main.index'))
-    form = RequestResetForm()
+    form = ResetPasswordRequestForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
-        token=user.get_reset_token()
-        body=render_template('reset-password-mail.txt',
-                            token=token, 
-                            website=url_for('app.main.index'))
-        html=render_template('reset-password-mail.html',
-                            token=token, 
-                            website=url_for('app.main.index'))
-        send_reset_email(app.config['MAIL_USERNAME'],
-                        user, 
-                        'Reset Password Request - [Alium || Resume Builder]',
-                        body, html=html,
-                        token=token)
-        flash('An email has been sent to you with instructions to resetting your password', 'info')
+        if user:
+            sent = send_reset_email(app.config['MAIL_USERNAME'],
+                            user)
+            if not sent:
+                flash('An email has been sent to you with instructions to resetting your password', 'info')
+            else:
+                return sent
     return render_template('reset_request.html', 
                             title='Reset Password',
                             form=form)
@@ -116,7 +108,7 @@ def reset_token(token):
         db.session.commit()
         flash(f'Password has been updated! You can now login', 'success')
         return redirect(url_for('app.auth.login'))
-    return render_template('reset_token.html', 
+    return render_template('reset_password.html', 
                             title='Reset Password',
                             form=form)
 

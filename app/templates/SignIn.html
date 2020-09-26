@@ -77,6 +77,10 @@
                 <p>Want to join us?</p>
                 <a style="text-decoration:none;" href = "{{url_for('app.auth.signup')}}" id = "signUp">sign up</a>
             </div>
+            <div class = "sign-up">
+                <p>Forget password?</p>
+                <a style="text-decoration:none;" href = "{{url_for('app.auth.reset_request')}}" id = "signUp">Request Reset</a>
+            </div>
 
             <a style="text-decoration:none;" href = "{{url_for('app.auth.login_google')}}" id = "google-signin"><img src="{{url_for('static', filename='image/Groupg.png')}}" width = "20" height = "18"/>  sign in with google</a>
 

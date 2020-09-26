@@ -9,7 +9,9 @@ from app.models import User
 class RegistrationForm(FlaskForm):
     email = StringField('Email', 
                     validators=[DataRequired(), Email()])
-    fullname = StringField('Fullname', 
+    firstname = StringField('Firstname', 
+                    validators=[DataRequired()])
+    lastname = StringField('Lastname', 
                     validators=[DataRequired()])
     password = PasswordField('Password', 
                     validators=[DataRequired()])
@@ -29,15 +31,15 @@ class LoginForm(FlaskForm):
                     validators=[DataRequired()])
     submit = SubmitField('Sign In')
 
-    def validate_email(self, email):
-        user = User.query.filter_by(email=email.data).first()
-        if not user:
-            raise ValidationError('Invalid email')
-
 class ResetPasswordRequestForm(FlaskForm):
     email = StringField('Email', 
                     validators=[DataRequired(), Email()])
     submit = SubmitField('Request Password Change')
+
+    def validate_email(self, email):
+        user = User.query.filter_by(email=email.data).first()
+        if not user:
+            raise ValidationError('Invalid email')
 
 class ResetPasswordForm(FlaskForm):
     password = PasswordField('Password', 
