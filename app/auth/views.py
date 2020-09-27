@@ -68,14 +68,13 @@ def send_reset_email(sender, user):
     html=render_template('mail/reset-password-mail.html',
                             token=token, user=user,
                             website=url_for('app.main.index'))
-    sent=send_email(sender=sender,
+    send_email(sender=sender,
             subject='Reset Password Request - [Alium || Resume Builder]',
             recipient=user.email,
             body=body,
             html=html)
-    return sent if sent else None
 
-@auth.route('/reset_password', methods=['GET', 'POST'])
+@auth.route('/reset-password', methods=['GET', 'POST'])
 def reset_request():
     if current_user.is_authenticated:
         return redirect(url_for('app.main.index'))
@@ -83,17 +82,17 @@ def reset_request():
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user:
-            sent = send_reset_email(app.config['MAIL_USERNAME'],
+            try:
+                send_reset_email(app.config['MAIL_USERNAME'],
                             user)
-            if not sent:
                 flash('An email has been sent to you with instructions to resetting your password', 'info')
-            else:
-                return sent
+            except Exception as e:
+                return {'Error':'Something went wrong', 'message': str(e)}
     return render_template('reset_request.html', 
                             title='Reset Password',
                             form=form)
 
-@auth.route('/reset_password/<token>', methods=['GET', 'POST'])
+@auth.route('/reset-password/<token>', methods=['GET', 'POST'])
 def reset_token(token):
     if current_user.is_authenticated:
         return redirect(url_for('home'))

@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gemheart Template</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='assets/gemheart.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='assets/navbar.css')}}">
+    <link rel="stylesheet" href="../static/assets/gemheart.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/assets/navbar.css">
 </head>
 <body>
     <nav>
         <div class="nav-image">
-            <img src="{{url_for('static', filename='assets/images/Logo 2.png')}}" alt="Alium Logo" width="97px" height="59px">
+            <img src="../static/assets/images/Logo 2.png" alt="Alium Logo" width="97px" height="59px">
         </div>
         <div class="navbar-contents">
             <a href="{{url_for('app.main.templates')}}">Templates</a>
-            <a href="{{url_for('app.main.resume')}}">Resume Builder</a>
-            <a href="">Blog</a>
-            <a href="">Contact Us</a>
+            <a href="{{url_for('app.main.preview')}}">Preview Resume</a>
+            <a href="{{url_for('app.main.generate_pdf')}}">Preview Resume PDF</a>
+            
         </div>
         <div class="profile">
             <p id="navname">{{current_user.firstname}}</p> 
@@ -26,14 +26,14 @@
                 {% if not current_user.avatar %}
                 <img src="https://via.placeholder.com/50.png/" alt="user">
                 {% else %}
-                <img src="{{current_user.avatar}" alt="user">
+                <img src="{{url_for('static', filename='assets/user_images/'+current_user.avatar)}}" alt="user">
                 {% endif %}
             </span>
         </div>
     </nav>
     <div class="mobilenavbar">
     <div class="mobilenav">
-        <img src="{{url_for('static', filename='')}}assets/images/Logo 2.png" alt="Alium Logo" width="97px" height="59px"> 
+        <img src="../static/assets/images/Logo 2.png" alt="Alium Logo" width="97px" height="59px"> 
         <div id="hamburger" onclick="clickOn()">
             <svg width="26" height="20" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="26" height="4" rx="2" fill="#1E90FF"/>
@@ -45,107 +45,125 @@
     <div class="dropdown">
         <div class="dropdown-content">
             <a href="{{url_for('app.main.templates')}}">Templates</a>
-            <a href="{{url_for('app.main.resume')}}">Resume Builder</a>
+            <a href="{{url_for('app.main.preview')}}">Preview Resume</a>
             <a href="">Blog</a>
             <a href="">Contact Us</a>
         </div>
         <div class="profile">
-            <a href=""><p id="navname">{{current_user.firstname}</p></a>
+            <a href=""><p id="navname">{{current_user.firstname}}</p></a>
             <span id="userimg">
                 {% if not current_user.avatar %}
                 <img src="https://via.placeholder.com/50.png/" alt="user">
                 {% else %}
-                <img src="{{current_user.avatar}" alt="user">
+                <img src="{{url_for('static', filename='assets/user_images/'+current_user.avatar)}}" alt="user">
                 {% endif %}
             </span>
         </div>
     </div>
 </div>
-    <section>
-        <div class="gemheart-template">
-            <img id="first" src="{{url_for('static', filename='')}}assets/images/Ellipse 8.png" alt="">
-            <div class="left-content">
-                <div class="image">
-                    {% if not current_user.avatar %}
-                    <img src="https://via.placeholder.com/80.png?text=Your+Picture" alt="">
-                    {% else %}
-                    <img src="{{current_user.avatar}" alt="user">
-                    {% endif %}
-                </div>
-                <div class="contact">
-                    <h1>Contact</h1>
-                    <div class="phone">
-                        <i class="fas fa-phone-alt"></i> <span id="telephone">{{current_user.phone}}</span> <br>
-                        <i class="fas fa-envelope"></i> <span id="mail">{{current_user.email}}</span> <br>
-                        <i class="fas fa-map-marker-alt"></i> <span id="mail">{{current_user.city}}, {{current_user.state}}, {{current_user.country}}</span>
+        <section>
+            <div class="gemheart-template">
+                <img id="first" src="../static/assets/images/Ellipse 8.png" alt="">
+                <div class="left-content">
+                    <div class="image">
+                        {% if not current_user.avatar %}
+                        <img src="https://via.placeholder.com/50.png/" alt="user">
+                        {% else %}
+                        <img src="{{url_for('static', filename='assets/user_images/'+current_user.avatar)}}" alt="user">
+                        {% endif %}
                     </div>
-                </div>
-                <div class="education">
-                    <h1>Education</h1>
-                    <div class="school">
-                        {% for education in current_user.educations.all() %}
-                        <div class="year1">
-                            <p>{{education.date_started}} - {% if education.date_end %}{{education.date_end}}{% else %}Present{%endif%}</p>
+                    <div class="contact">
+                        <h1>Contact</h1>
+                        <div class="phone">
+                            <i class="fas fa-phone-alt"></i> <span id="telephone">{{current_user.phone}}</span> <br>
+                            <i class="fas fa-envelope"></i> <span id="mail">{{current_user.email}}</span> <br>
+                            <i class="fas fa-map-marker-alt"></i> 
+                            <span id="mail">{% if current_user.city %}{{current_user.city}}{% endif %}, {% if current_user.state %}{{current_user.state}}{% endif %}, {% if current_user.country %}{{current_user.country}}{% endif %}</span>
+
+                        </div>
+                    </div>
+                    <div class="education">
+                        <h1>Education</h1>
+                        <div class="school">
+                            {% for education in current_user.educations.all() %}
+                            <div class="year1">
+                                <p id="year1">{{education.date_started.year}} - {% if education.date_end %}{{education.date_end.year}}{% else %}Present{%endif%}</p>
+                            </div>    
                             <p id="degree">{{education.degree_name}}, {{education.course}}</p>
                             <p id="school1">{{education.school}} | {{education.location}}</p>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
-                    </div>
-                    
-
-                </div>
-            </div>
-            <div class="right-content">
-                <h1 class="first-name">{{current_user.firstname}} <span id="blue" class="last-name">{{current_user.lastname}}</span></h1>
-                <div class="contents">
-                    <h2 id="job-title">{{current_user.current_job}}</h2>
-                    <p id="bio">{{current_user.about_me}}</p>
-                    <div class="work">
-                        <h2>Work Experience</h2>
-                        {% for work in current_user.works %}
-                        <div class="job">
-                            <h3>{{work.title}}</h3>
-                            <div class="year1"><p id="Jyear1">{work.date_started}-{% if work.date_end %}{work.date_end}{%else%}Present{%endif%}</p></div>
-                            <p id="company-name">{{work.company}}</p>
-                            <p id="duties">{{work.description}}</p>
-                        </div>
-                        {% endfor %}
-                    </div>
-                    <div class="hobbies">
-                        <h2>Hobbies</h2>
-                        <div class="hobby-list">
-                            {% with paginate as current_user.hobbies.paginate(1, 2) %}
-                            {% for pag in paginate.items %}
-                            {% endwith %}
-                            <div id="hobby3">
-                                <svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="20" cy="20" r="20" fill="#1E90FF"/>
-                                    </svg>
-                                    <span id="hobbyC">Travelling</span>
-                            </div>
-                            <div id="hobby4">
-                                <svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="20" cy="20" r="20" fill="#1E90FF"/>
-                                    </svg>
-                                    <span id="hobbyD">Designing</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skills">
-                        {% for skill in current_user.skills.all() %}
-                        <h2>{{skill}}</h2>
-                        {% endfor %}
+                        
+    
                     </div>
                 </div>
+                <div class="right-content">
+                    <h1 class="first-name">{{current_user.firstname}} <span id="blue" class="last-name">{{current_user.lastname}}</span></h1>
+                    <div class="contents">
+                        <h2 id="job-title">{{current_user.current_occupation}}</h2>
+                        <p id="bio">{{current_user.about_me}}</p>
+                        <div class="work">
+                            <h2>Work Experience</h2>
+                            {% for work in current_user.works %}
+                            <div class="job">
+                                <h3>{{work.title}}</h3>
+                                <div class="year1">
+                                    <p id="Jyear1">{{work.date_started.year}}-{% if work.date_end %}{{work.date_end.year}}{%else%}Present{%endif%}</p></div>
+                                    <p id="company-name">{{work.company}}</p>
+                                    {% if work.description %}
+                                    <p id="duties">{{work.description}}</p>{% endif %}
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                        {% if len(hobbies) > 0 %}
+                        <div class="hobbies">
+                            <h2>Hobbies</h2>
+                            <div class="hobby-list">
+                                {% for hobby in hobbies %}
+                                    {% if len(hobby) == 2 %}
+                                        <div id="hobby3">
+                                            <svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="20" cy="20" r="20" fill="#1E90FF"/>
+                                            </svg>
+                                            <span id="hobbyC">{{hobby[0].name}}</span>
+                                        </div>
+                                        <div id="hobby4">
+                                            <svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="20" cy="20" r="20" fill="#1E90FF"/>
+                                            </svg>
+                                            <span id="hobbyD">{{hobby[1].name}}</span>
+                                        </div>
+                                    {% else %}
+                                        <div id="hobby3">
+                                            <svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="20" cy="20" r="20" fill="#1E90FF"/>
+                                            </svg>
+                                            <span id="hobbyC">{{hobby[0].name}}</span>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if current_user.skills.all() %}
+                        <div class="skills">
+                            <h2>Skills</h2>
+                            {% for skill in current_user.skills.all() %}
+                            <p>{{skill.name}}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
-        </div>
-
-    </section>
+    
+        </section>
 
     <hr>
     <footer>
         <div class="nav-image">
-            <img src="{{url_for('static', filename='assets/images/Logo 2.png')}}" alt="Alium Logo" width="97px" height="59px">
+            <img src="../static/assets/images/Logo 2.png" alt="Alium Logo" width="97px" height="59px">
         </div>
         <div class="popular">
             <div class="head">
@@ -199,8 +217,8 @@
     
 </body>
 <!-- jQuery (Bootstrap JS plugins depend on it) -->
-<script src="js/jquery-2.1.4.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="{{url_for('static', filename='')}}assets/app.js"></script>
+<script src="../static/js/jquery-2.1.4.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/assets/app.js"></script>
 <script src="https://kit.fontawesome.com/dc7f1f050e.js" crossorigin="anonymous"></script>
 </html>

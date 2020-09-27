@@ -18,12 +18,12 @@
         </div>
         <div class="navbar-contents">
             <a href="{{url_for('app.main.templates')}}">Templates</a>
-            <a href="{{url_for('app.main.resume')}}">Resume Builder</a>
+            <a href="{{url_for('app.main.preview')}}">Preview Resume</a>
             <a href="">Blog</a>
             <a href="">Contact Us</a>
         </div>
         <div class="profile">
-            <p id="navname">Zeus</p> <span id="userimg"><img src="https://via.placeholder.com/50.png/" alt="user"></span>
+            <p id="navname">{{current_user.firstname}}</p> <span id="userimg"><img src="https://via.placeholder.com/50.png/" alt="user"></span>
         </div>
     </nav>
     <div class="mobilenavbar">
@@ -40,7 +40,7 @@
     <div class="dropdown">
         <div class="dropdown-content">
             <a href="{{url_for('app.main.templates')}}">Templates</a>
-            <a href="{{url_for('app.main.resume')}}">Resume Builder</a>
+            <a href="{{url_for('app.main.preview')}}">Preview Resume</a>
             <a href="">Blog</a>
             <a href="">Contact Us</a>
         </div>
@@ -83,7 +83,6 @@
         <div class = "text-center resume-btn">
             <a id = "build-resume" href = "{{url_for('app.main.preview')}}">Preview Resume</a>
             <a id = "build-resume" href = "{{url_for('app.main.preview')}}">Preview Resume preferred</a>
-            <a id = "build-resume" href = "{{url_for('app.main.preview')}}">Receive Resume in email</a>
         </div>
         {% endif %}
     </div>

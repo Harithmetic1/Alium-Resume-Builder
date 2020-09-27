@@ -18,7 +18,7 @@
         </div>
         <div class="navbar-contents">
             <a href="{{url_for('app.main.templates')}}">Templates</a>
-            <a href="{{url_for('app.main.resume')}}">Resume Builder</a>
+            <!-- <a href="{{url_for('app.main.resume')}}">Resume Builder</a> -->
             <a href="">Blog</a>
             <a href="">Contact Us</a>
             {% if current_user.is_authenticated %}
@@ -49,7 +49,7 @@
     <div class="dropdown">
         <div class="dropdown-content">
             <a href="{{url_for('app.main.templates')}}">Templates</a>
-            <a href="{{url_for('app.main.resume')}}">Resume Builder</a>
+            <!-- <a href="{{url_for('app.main.resume')}}">Resume Builder</a> -->
             <a href="">Blog</a>
             <a href="">Contact Us</a>
             {% if current_user.is_authenticated %}
@@ -68,7 +68,15 @@
     </div>
 </div>
 
-
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-info"> 
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
     <div class = "container">
         <div id = "main-content">
             <h2>You're just a sign up away from being hired.</h2>

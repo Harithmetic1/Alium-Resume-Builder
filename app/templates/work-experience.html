@@ -7,8 +7,8 @@
     <title>Work Experience</title>
     <!-- <a href="https://icons8.com/icon/17949/google"></a> -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/styles2.css">
 </head>
 <body>
    <div class = "container">
@@ -187,7 +187,7 @@
 
         <div class = "buttons">
             <a class = "back-tab" href = "{{url_for('app.main.add_profile')}}">Back</a>
-            <a class = "save" href = "#">Save &AMP; Next</a>
+            <a class = "save" href = "{{url_for('app.main.add_education')}}">Save &AMP; Next</a>
         </div>
     </div>
 
@@ -198,9 +198,9 @@
 
 
     <!-- jQuery (Bootstrap JS plugins depend on it) -->
-    <script src="{{url_for('static', filename='js/jquery-2.1.4.min.js')}}"></script>
-    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
-    <script src="{{url_for('static', filename='js/script.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/js/jquery-2.1.4.min.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/js/script.js')}}"></script>
     <script>
         
     </script>

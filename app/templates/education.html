@@ -17,13 +17,20 @@
             <img src="../static/assets/images/Logo 2.png" alt="Alium Logo" width="97px" height="59px">
         </div>
         <div class="navbar-contents">
-            <a href="{{url_for('app.main.templates')}}">Templates</a>
-            <a href="{{url_for('app.main.resume')}}">Resume Builder</a>
-            <a href="">Blog</a>
-            <a href="">Contact Us</a>
+            <a href="{{url_for('app.main.templates')}}">Templates || Resume Builder</a>
+            <a href="{{url_for('app.main.preview')}}">Preview Resume</a>
+            <a href="{{url_for('app.main.generate_pdf')}}">Preview Resume PDF</a>
+            <!-- <a href="">Blog</a>
+            <a href="">Contact Us</a> -->
         </div>
         <div class="profile">
-            <p id="navname">Zeus</p> <span id="userimg"><img src="https://via.placeholder.com/50.png/" alt="user"></span>
+            <p id="navname">{% if current_user.firstname %}{{current_user.firstname}}</p>{% else %}Zeus {% endif %} <span id="userimg">
+                {% if not current_user.avatar %}
+                <img src="https://via.placeholder.com/50.png/" alt="user">
+                {% else %}
+                <img src="{{url_for('static', filename='assets/user_images/'+current_user.avatar)}}" alt="user">
+                {% endif %}
+            </span>
         </div>
     </nav>
     <div class="mobilenavbar">
@@ -39,13 +46,21 @@
     </div>
     <div class="dropdown">
         <div class="dropdown-content">
-            <a href="{{url_for('app.main.templates')}}">Templates</a>
-            <a href="{{url_for('app.main.resume')}}">Resume Builder</a>
-            <a href="">Blog</a>
-            <a href="">Contact Us</a>
+            <a href="{{url_for('app.main.templates')}}">Build Resume || Templates</a>
+            <a href="{{url_for('app.main.preview')}}">Resume Builder</a>
+            <a href="{{url_for('app.main.generate_pdf')}}">Resume Builder</a>
+            <!-- <a href="">Blog</a>
+            <a href="">Contact Us</a> -->
         </div>
         <div class="profile">
-            <a href=""><p id="navname">Zeus</p></a><span id="userimg"><img src="https://via.placeholder.com/50.png/" alt="user"></span>
+            <a href=""><p id="navname">{{current_user.firstname}}</p></a>
+            <span id="userimg">
+                {% if not current_user.avatar %}
+                <img src="https://via.placeholder.com/50.png/" alt="user">
+                {% else %}
+                <img src="{{url_for('static', filename='assets/user_images'+current_user.avatar)}}" alt="user">
+                {% endif %}
+            </span>
         </div>
     </div>
 </div>
@@ -221,8 +236,8 @@
         </div>
 
         <div class = "buttons">
-            <a class = "back-tab" href = "#">Back</a>
-            <a class = "save" href = "#">Save &AMP; Next</a>
+            <a class = "back-tab" href = "{{url_for('app.main.add_experience')}}">Back</a>
+            <a class = "save" href = "{{url_for('app.main.add_skill')}}">Save &AMP; Next</a>
         </div>
     </div>
 
@@ -283,8 +298,8 @@
     
 </body>
 <!-- jQuery (Bootstrap JS plugins depend on it) -->
-<script src="js/jquery-2.1.4.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="../static/js/jquery-2.1.4.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
 <script src="../static/assets/app.js"></script>
 <script src="https://kit.fontawesome.com/dc7f1f050e.js" crossorigin="anonymous"></script>
 </html>

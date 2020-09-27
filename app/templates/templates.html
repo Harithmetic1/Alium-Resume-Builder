@@ -12,18 +12,34 @@
     <link rel="stylesheet" href="../static/assets/navbar.css">
 </head>
 <body>
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-info"> 
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     <nav>
         <div class="nav-image">
             <img src="../static/assets/images/Logo 2.png" alt="Alium Logo" width="97px" height="59px">
         </div>
         <div class="navbar-contents">
             <a href="{{url_for('app.main.templates')}}">Templates</a>
-            <a href="{{url_for('app.main.resume')}}">Resume Builder</a>
+            <a href="{{url_for('app.main.preview')}}">Preview Resume</a>
             <a href="">Blog</a>
             <a href="">Contact Us</a>
         </div>
         <div class="profile">
-            <p id="navname">Zeus</p> <span id="userimg"><img src="https://via.placeholder.com/50.png/" alt="user"></span>
+            <p id="navname">{% if current_user.is_authenticated %}{{current_user.firstname}}{% else %} Zeus{%endif%}</p> 
+            <span id="userimg">
+                {% if not current_user.avatar %}
+                <img src="https://via.placeholder.com/50.png/" alt="user"></span>
+                {% else %}
+                <img src="{{url_for('static', filename='assets/user_images/'+current_user.avatar)}}" alt="user">
+                {% endif %}
+            </span>
         </div>
     </nav>
     <div class="mobilenavbar">
@@ -40,7 +56,7 @@
     <div class="dropdown">
         <div class="dropdown-content">
             <a href="{{url_for('app.main.templates')}}">Templates</a>
-            <a href="{{url_for('app.main.resume')}}">Resume Builder</a>
+            <a href="{{url_for('app.main.preview')}}">Resume Builder</a>
             <a href="">Blog</a>
             <a href="">Contact Us</a>
         </div>
@@ -81,11 +97,6 @@
         </div>
         </div>
         </div>
-
-        <!-- <div class = "text-center resume-btn">
-            <a id = "build-resume" href = "{{url_for('app.main.resume')}}">&nbsp; &nbsp; &nbsp; &nbsp;next &nbsp; &nbsp; &nbsp; &nbsp;</a>
-        </div> -->
-
     </div>
 
     <hr>

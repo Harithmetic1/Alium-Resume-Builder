@@ -142,7 +142,7 @@ class Education(db.Model):
         return f"Education('{self.course}', '{self.date_started}')"
     
     def create_data(self, data):
-        for field in ['course', 'school', 'date started', 'date end', 'degree name']:
+        for field in ['course', 'school', 'date started', 'date end', 'degree name', 'location']:
             if field in data:
                 setattr(self, field, data[field])
     

@@ -18,12 +18,20 @@
         </div>
         <div class="navbar-contents">
             <a href="{{url_for('app.main.templates')}}">Templates</a>
-            <a href="{{url_for('app.main.resume')}}">Resume Builder</a>
+            <a href="{{url_for('app.main.preview')}}">Preview Resume</a>
+            <a href="{{url_for('app.main.generate_pdf')}}">Preview Resume PDF</a>
             <a href="">Blog</a>
             <a href="">Contact Us</a>
         </div>
         <div class="profile">
-            <p id="navname">Zeus</p> <span id="userimg"><img src="https://via.placeholder.com/50.png/" alt="user"></span>
+            <p id="navname">{{current_user.firstname}}</p> 
+            <span id="userimg">
+                {% if not current_user.avatar %}
+                <img src="https://via.placeholder.com/50.png/" alt="user">
+                {% else %}
+                <img src="{{url_for('static', filename='assets/user_images'+current_user.avatar)}}" alt="user">
+                {% endif %}
+            </span>
         </div>
     </nav>
     <div class="mobilenavbar">
@@ -40,12 +48,20 @@
     <div class="dropdown">
         <div class="dropdown-content">
             <a href="{{url_for('app.main.templates')}}">Templates</a>
-            <a href="{{url_for('app.main.resume')}}">Resume Builder</a>
+            <a href="{{url_for('app.main.preview')}}">Preview Resume</a>
+            <a href="{{url_for('app.main.generate_pdf')}}">Preview Resume PDF</a>
             <a href="">Blog</a>
             <a href="">Contact Us</a>
         </div>
         <div class="profile">
-            <a href=""><p id="navname">Zeus</p></a><span id="userimg"><img src="https://via.placeholder.com/50.png/" alt="user"></span>
+            <a href=""><p id="navname">{{current_user.firstname}}</p></a>
+            <span id="userimg">
+                {% if not current_user.avatar %}
+                <img src="https://via.placeholder.com/50.png/" alt="user">
+                {% else %}
+                <img src="{{url_for('static', filename='assets/user_images'+current_user.avatar)}}" alt="user">
+                {% endif %}
+            </span>
         </div>
     </div>
 </div>
@@ -75,8 +91,10 @@
             <p>Highlight your top skills and proficiency level.</p>
         </div>
 
+        <div>
 
-        <form>
+        </div>
+        <form class="main-form">
             <div class = "form-row">
                 <div class = "form-group col-xs-6">
                     <label for = "inputSkillName">Skill Name</label>
@@ -86,45 +104,18 @@
                     <label for = "inputSkillProficiency">Proficiency</label>
                     <select id = "inputSkillProficiency" class = "form-control">
                         <option selected>Select Level</option>
+                        <option>Novice</option>
                         <option>Beginner</option>
                         <option>Intermediate</option>
                         <option>Expert</option>
                     </select>
                 </div>
-                <a class = "col-xs-1 delete-skill" href = "#"><img class = "img-fluid" src = "images/Group.png"></a>
-
-                <div class = "form-group col-xs-6">
-                    <label for = "inputSkillName">Skill Name</label>
-                    <input type = "text" class = "form-control" id = "inputSkillName" placeholder = "Enter your skill name">
+                <div class = "save-skill">
+                    <button href="" class = "saveSkill"><span class = "plus">+</span> Save skill</button>
                 </div>
-                <div class = "form-group col-xs-5">
-                    <label for = "inputSkillProficiency">Proficiency</label>
-                    <select id = "inputSkillProficiency" class = "form-control">
-                        <option selected>Select Level</option>
-                        <option>Beginner</option>
-                        <option>Intermediate</option>
-                        <option>Expert</option>
-                    </select>
-                </div>
-                <a class = "col-xs-1 delete-skill" href = "#"><img class = "img-fluid" src = "images/Group.png"></a>
-
-                <div class = "form-group col-xs-6">
-                    <label for = "inputSkillName">Skill Name</label>
-                    <input type = "text" class = "form-control" id = "inputSkillName" placeholder = "Enter your skill name">
-                </div>
-                <div class = "form-group col-xs-5">
-                    <label for = "inputSkillProficiency">Proficiency</label>
-                    <select id = "inputSkillProficiency" class = "form-control">
-                        <option selected>Select Level</option>
-                        <option>Beginner</option>
-                        <option>Intermediate</option>
-                        <option>Expert</option>
-                    </select>
-                </div>
-                <a class = "col-xs-1 delete-skill" href = "#"><img class = "img-fluid" src = "images/Group.png"></a>
-                
-
+                <!-- <button class = "col-xs-1 delete-skill"><img class = "img-fluid" src = "../static/image/Group.png"></button> -->
             </div>
+            
         </form>
 
 </div>
@@ -135,8 +126,8 @@
         </div>
 
         <div class = "buttons">
-            <a class = "back-tab" href = "#">Back</a>
-            <a class = "save" href = "#">Save &AMP; Next</a>
+            <a class = "back-tab" href = "{{url_for('app.main.add_education')}}">Back</a>
+            <a class = "save" href = "{{url_for('app.main.add_hobby')}}">Save &AMP; Next</a>
         </div>
 </div>
 
@@ -200,8 +191,38 @@
    
 </body>
 <!-- jQuery (Bootstrap JS plugins depend on it) -->
-<script src="js/jquery-2.1.4.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="../static/js/jquery-2.1.4.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
 <script src="../static/assets/app.js"></script>
 <script src="https://kit.fontawesome.com/dc7f1f050e.js" crossorigin="anonymous"></script>
+<script>
+    let formRow = document.querySelector('.form-row')
+    let form=document.querySelector('.main-form')
+    let addSkill = document.querySelector('.add-skill')
+    addSkill.addEventListener('click', e =>{
+        let newForm = formRow.cloneNode(deep=true)
+        form.appendChild(newForm)
+
+    })
+    // let save = document.querySelector('.save-skill')
+    // save.addEventListener('click', e=>{
+    //     e.preventDefault()  
+    //     let parent = save.parentElement
+    //     let skill = parent.firstChild.lastChild
+    //     console.log(skill, parent)
+    //     let level = parent.children[1].lastChild.nodeValue
+    //     if (skill) {
+    //         fetch('/dashboard/api/skill', {
+    //             method: 'POST',
+    //             body: JSON.stringify({
+    //                 skill, level
+    //             })
+    //         }).then(res => {
+    //             console.log(res)
+    //         })
+    //     }
+
+    //     console.log(parent)
+    // })
+</script>
 </html>

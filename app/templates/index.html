@@ -17,7 +17,6 @@
             {% if current_user.is_authenticated %}
             <a href="{{url_for('app.main.preview')}}">Preview Resume</a>
             <a href="{{url_for('app.main.generate_pdf')}}">Preview Resume as PDF</a>
-            <a href="{{url_for('app.main.send_resume_mail')}}">Receive resume in mail</a>
                 <span id="sign-up">
                     <a href="{{url_for('app.auth.logout')}}">Log Out</a>
                 </span>
@@ -50,7 +49,6 @@
             {% if current_user.is_authenticated %}
                 <a href="{{url_for('app.main.preview')}}">Preview Resume</a>
                 <a href="{{url_for('app.main.generate_pdf')}}">Preview Resume as PDF</a>
-                <a href="{{url_for('app.main.send_resume_mail')}}">Receive resume in your mail</a>
                 <span id="sign-up">
                     <a href="{{url_for('app.auth.logout')}}">Log Out</a>
                 </span>
@@ -65,6 +63,15 @@
         </div>
     </div>
 </div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info"> 
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
     <header>
         <div class="left">
             <h1>
