@@ -26,7 +26,7 @@ def create_app(config=Config):
     app.register_blueprint(auth, url_prefix='/auth')
 
     from app.errors import errors
-    app.register_blueprint(errors)
+    app.register_blueprint(errors, url_prefix='/errors')
 
     from app.main import main
     app.register_blueprint(main, url_prefix='/dashboard')
