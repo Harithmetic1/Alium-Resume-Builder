@@ -7,7 +7,7 @@ load_dotenv(os.path.join(basedir,'.env'))
 class Config:
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
     SECRET_KEY=os.environ.get('SECRET_KEY')
-    PDF_TO_HTML=pdfkit.configuration(wkhtmltopdf = os.environ.get('PDF_TO_HTML'))
+    # PDF_TO_HTML=pdfkit.configuration(wkhtmltopdf = os.environ.get('PDF_TO_HTML'))
     SQLALCHEMY_TRACK_MODIFICATIONS=1
     MAIL_USERNAME=os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD=os.environ.get('MAIL_PASSWORD')
