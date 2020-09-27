@@ -63,6 +63,15 @@
         </div>
     </div>
 </div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info"> 
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
     <header>
         <div class="left">
             <h1>

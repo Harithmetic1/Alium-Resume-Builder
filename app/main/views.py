@@ -140,9 +140,11 @@ def add_hobby():
 def preview():
     if current_user.current_template:
         template = f'user-{current_user.current_template}.html'
+    else:
+        template = None
     if template != 'user-gemheart.html':
         flash('Your preferred template does not currently exist, Our developers are currently working on making it live')
-        return redirect(url_for('app.main.template'))
+        return redirect(url_for('app.main.templates'))
     hobbies = current_user.hobbies.all()
     if len(hobbies) > 2:
         hbs = [hobbies[i: i+2] for i in range(len(hobbies)-2)]

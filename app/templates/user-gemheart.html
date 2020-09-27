@@ -116,6 +116,7 @@
                             {% endfor %}
                             </div>
                         </div>
+                        {% if len(hobbies) > 0 %}
                         <div class="hobbies">
                             <h2>Hobbies</h2>
                             <div class="hobby-list">
@@ -144,12 +145,15 @@
                                 {% endfor %}
                             </div>
                         </div>
+                        {% endif %}
+                        {% if current_user.skills.all() %}
                         <div class="skills">
                             <h2>Skills</h2>
                             {% for skill in current_user.skills.all() %}
                             <p>{{skill.name}}</p>
                             {% endfor %}
                         </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
