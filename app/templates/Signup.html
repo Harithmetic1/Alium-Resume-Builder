@@ -18,7 +18,6 @@
         </div>
         <div class="navbar-contents">
             <a href="{{url_for('app.main.templates')}}">Templates</a>
-            <!-- <a href="{{url_for('app.main.resume')}}">Resume Builder</a> -->
             <a href="">Blog</a>
             <a href="">Contact Us</a>
             {% if current_user.is_authenticated %}
@@ -49,7 +48,6 @@
     <div class="dropdown">
         <div class="dropdown-content">
             <a href="{{url_for('app.main.templates')}}">Templates</a>
-            <!-- <a href="{{url_for('app.main.resume')}}">Resume Builder</a> -->
             <a href="">Blog</a>
             <a href="">Contact Us</a>
             {% if current_user.is_authenticated %}
@@ -255,8 +253,8 @@
     
 </body>
 <!-- jQuery (Bootstrap JS plugins depend on it) -->
-<script src="js/jquery-2.1.4.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="../static/js/jquery-2.1.4.min.js"></script>
+<script src="../staticjs/bootstrap.min.js"></script>
 <script src="../static/assets/app.js"></script>
 <script src="https://kit.fontawesome.com/dc7f1f050e.js" crossorigin="anonymous"></script>
 </html>

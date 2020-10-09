@@ -1,6 +1,9 @@
 from flask import (render_template, url_for, abort, make_response, request, jsonify,
     redirect, flash, current_app as app)
 from flask_login import login_required, current_user
+import os
+from xhtml2pdf import pisa
+from io import StringIO
 import pdfkit
 from app import db
 from app.main import main
@@ -21,12 +24,9 @@ def help():
 @main.route('/pdf-resume')
 @login_required
 def generate_pdf():
-    import os
     if not current_user.current_template:
-        return {
-            'error': 'Invalid request', 
-            'message': 'You did not choose any template yet'
-        }
+        flash('You haven\'t not choose any tempate')
+        return redirect(url_for('app.main.templates'))
     template = f'user-{current_user.current_template}-pdf.html'
     hobbies = current_user.hobbies.all()
     if len(hobbies) > 2:
@@ -34,29 +34,36 @@ def generate_pdf():
     else:
         hbs = [hobbies]
     pdf = render_template(template, hobbies=hbs, len=len)
-    css = [
-        os.path.join(app.root_path, 'static/css/bootstrap.min.css'),
-        os.path.join(app.root_path, 'static/css/styles.css'),
-        os.path.join(app.root_path, 'static/assets/navbar.css'),
-        os.path.join(app.root_path, 'static/assets/gemheart.css'),
-        os.path.join(app.root_path, 'static/js/jquery-2.1.4.min.js'),
-        os.path.join(app.root_path, 'static/js/bootstrap.min.js'),
-        os.path.join(app.root_path, 'static/assets/app.js'),
-        os.path.join(app.root_path, 'static/assets/images/Ellipse 8.png')
-        # "https://kit.fontawesome.com/dc7f1f050e.js"
-    ]
-    js = [
+
+    result = StringIO()
+    pdf = pisa.pisaDocument(StringIO(pdf))
+    if not pdf.err:
+        response = make_response(pdf)
+        response.headers['Content-Type']='application/pdf'
+        response.headers['Content-Disposition']='inline; filename.pdf'
+        try: return response
+        except Exception as e: return {'error': e}
+    else: 
+        abort(500)
+    
+    # css = [
+    #     os.path.join(app.root_path, 'static/css/bootstrap.min.css'),
+    #     os.path.join(app.root_path, 'static/css/styles.css'),
+    #     os.path.join(app.root_path, 'static/assets/navbar.css'),
+    #     os.path.join(app.root_path, 'static/assets/gemheart.css'),
+    #     os.path.join(app.root_path, 'static/js/jquery-2.1.4.min.js'),
+    #     os.path.join(app.root_path, 'static/js/bootstrap.min.js'),
+    #     os.path.join(app.root_path, 'static/assets/app.js'),
+    #     os.path.join(app.root_path, 'static/assets/images/Ellipse 8.png')
+    #     # "https://kit.fontawesome.com/dc7f1f050e.js"
+    # ]
+    # js = [
         
-    ]
-    options = {'enable-local-file-access': True}
-    pdf=pdfkit.from_string(pdf, output_path=current_user.avatar.split('.')[0]+'.pdf',  
-                configuration=app.config['PDF_TO_HTML'], css=css, options=options)
-    response = make_response(pdf)
-    response.headers['Content-Type']='application/pdf'
-    response.headers['Content-Disposition']='inline; filename.pdf'
-
-    return response
-
+    # ]
+    # options = {'enable-local-file-access': True}
+    # pdf=pdfkit.from_string(pdf, output_path=current_user.avatar.split('.')[0]+'.pdf',  
+    #             configuration=app.config['PDF_TO_HTML'], css=css, options=options)
+    
 @main.route('/templates')
 def templates():
     return render_template('templates.html')
